@@ -1,0 +1,22 @@
+.main {
+  position: fixed;
+  left:5%;
+  top: 10%;
+}
+.allBtn {
+  margin-top: 15%;
+  display: flex;
+  align-items: center;
+}
+.allBtn:first-child{
+  margin-top: 0%;
+}
+.allBtn:hover {
+  color: #849e7b;
+  font-size: 22px;
+  cursor: pointer;
+}
+.btnText {
+  padding-left: 5px;
+  font-size: 20px;
+}

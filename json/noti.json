@@ -1,0 +1,20 @@
+{
+  "notification": [
+    {
+      "notiID": "n1",
+      "owner": "peeranut",
+      "otherImg": "https://firebasestorage.googleapis.com/v0/b/attract64-2.appspot.com/o/duck.png?alt=media&token=37e59296-855d-42da-a64c-ae3efac76989",
+      "other": "delta",
+      "action": "follow you",
+      "time": "1 minutes ago"
+    },
+    {
+      "notiID": "n2",
+      "owner": "miki",
+      "otherImg": "https://firebasestorage.googleapis.com/v0/b/attract64-2.appspot.com/o/songzii.gif?alt=media&token=a920b342-a859-465b-894c-7c4b592da7d4",
+      "other": "una",
+      "action": "unfollow you",
+      "time": "1 hr"
+    }
+  ]
+}
