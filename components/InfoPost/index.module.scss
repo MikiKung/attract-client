@@ -1,0 +1,66 @@
+.main {
+  background-color: #ffffff;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-top: 5px;
+  position: relative;
+}
+.headPost {
+  display: flex;
+  // flex-direction: column;
+  justify-content: space-between;
+  padding: 3%;
+}
+.profileImg {
+  height: 40px;
+  width: 40px;
+  border-radius: 100%;
+}
+.timePost {
+  font-size: 10px;
+  color: #a3a3a3;
+}
+.middlePost {
+  padding: 0 3%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.infoText {
+  font-size: 13px;
+}
+.infoImg {
+  margin-top: 2%;
+}
+.underPost {
+  padding: 3%;
+}
+.mark {
+  display: flex;
+  align-items: center;
+}
+.markImg {
+  width: 15px;
+}
+.morePost {
+  cursor: pointer;
+}
+.modalPost {
+  position: absolute;
+  top: 30px;
+  right: 10px;
+  // padding: 5px;
+  border-radius: 10px;
+  background-color: white;
+  box-shadow: 1px 1px 1px 1px #72856c;
+  cursor: pointer;
+  overflow: hidden;
+}
+.modalItem {
+  cursor: pointer;
+  padding: 5px;
+}
+.modalItem:hover {
+  background-color: #72856c;
+  transition: 0.25s;
+}

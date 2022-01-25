@@ -1,12 +1,10 @@
-.main{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    // height: 100%;
-    position: fixed;
-    top: 10%;
-    left: 30%;
+.main {
+  width: 100%;
+  justify-content: center;
+  display: flex;
+  padding-top: 70px;
+  // padding-top: 8%;
 }
-.topic{
-    display: flex;
-    // flex-direction: column;
+.topic {
+  width: 30%;
 }

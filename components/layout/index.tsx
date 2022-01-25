@@ -7,12 +7,11 @@ const Layout = (props: any) => {
   return (
     <div>
       <Headbar user={mockData.users[1]} />
+      <Leftbar />
       <div className={classes.main}>
-        <p></p>
-        <Leftbar />
         <div className={classes.topic}>{props.children}</div>
-        <Rightbar user={mockData.users[1]} />
       </div>
+      <Rightbar user={mockData.users[1]} />
     </div>
   )
 }

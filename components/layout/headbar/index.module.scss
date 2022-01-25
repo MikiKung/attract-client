@@ -19,18 +19,19 @@
   border-radius: 10px;
   overflow: hidden;
   padding: 5px;
-  width: 30%;
+  width: 100%;
 }
-.navInput{
-  width: 100%;  
+.navInput {
+  width: 100%;
   padding-left: 1%;
 }
-.navInput:focus{
+.navInput:focus {
   outline: none;
 }
 
 .userImg {
-  height: 80%;
+  height: 40px;
+  width: 40px;
   border-radius: 100%;
   object-fit: fill;
 }
@@ -60,62 +61,29 @@
   background-color: #72856c;
   transition: 0.25s;
 }
-
-// .main {
-//   background-color: #849e7b;
-//   height: 50px;
-//   display: flex;
-//   justify-content: space-between;
-//   align-items: center;
-//   padding-left: 5%;
-//   padding-right: 5%;
-//   position: fixed;
-// }
-// .userImg {
-//   height: 80%;
-//   border-radius: 100%;
-//   object-fit: fill;
-// }
-// .userImg:hover {
-//   cursor: pointer;
-// }
-// .modal {
-//   z-index: 10;
-//   right: 3.5%;
-//   position: fixed;
-//   border-radius: 10%;
-//   overflow: hidden;
-//   box-shadow: 1px 1px 1px 1px #72856c;
-// }
-// .modalItem {
-//   background-color: whitesmoke;
-//   cursor: pointer;
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   width: 100px;
-//   height: 35px;
-// }
-// .modalItem:hover {
-//   background-color: #72856c;
-//   transition: 0.25s;
-// }
-// .navInput {
-//   height: 65%;
-//   width: 30%;
-//   border-radius: 10px;
-//   background-image: url('https://firebasestorage.googleapis.com/v0/b/attract64-2.appspot.com/o/search.svg?alt=media&token=742a63c1-26f2-4ed8-89e1-63179c3c8dbc');
-//   background-size: contain;
-//   background-repeat: no-repeat;
-//   text-indent: 30px;
-//   /* Extra Styling */
-//   padding: 5px;
-//   transition: 0.3s;
-// }
-// .navInput:focus {
-//   background-image: none;
-//   text-indent: 0px;
-// }
-// .logoImg{
-//   height: 80px;
-// }
+.searchHistory {
+  position: fixed;
+  top: 6.5%;
+  left: 38%;
+  background-color: antiquewhite;
+  width: 27%;
+  // margin-left: 2%;
+}
+.forHistory {
+  width: 32%;
+  display: flex;
+  flex-direction: column;
+}
+.oneHistory {
+  display: flex;
+  justify-content: space-between;
+  padding-left: 2%;
+  padding-right: 2%;
+}
+.crossHistory {
+  cursor: pointer;
+  width: 10px;
+}
+.hr {
+  color: aqua;
+}

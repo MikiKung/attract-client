@@ -1,0 +1,26 @@
+.main {
+  padding: 3%;
+  background-color: white;
+  border-radius: 10px;
+}
+.headInput{
+    display: flex;
+}
+.profileInput {
+  height: 40px;
+  width: 40px;
+  border-radius: 100%;
+}
+
+.inputZone{
+    outline: none;
+    width: 100%;
+    margin-left: 10px;
+}
+.underInput{
+    display: flex;
+    justify-content: space-around;
+}
+.inputIconItem {
+    width: 20px;
+}
