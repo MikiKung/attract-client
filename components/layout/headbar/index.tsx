@@ -13,7 +13,6 @@ const Headbar = (props: any) => {
     setUserAvatar(!userAvartar)
   }
   const router = useRouter()
-  console.log(props.user.historySearch)
   return (
     <div className={classes.main}>
       <img src="./logo-white.png" className={classes.logoImg} alt="logo" />
