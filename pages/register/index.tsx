@@ -1,6 +1,12 @@
-import Link from 'next/link'
-import classes from './index.module.scss'
+import Link from "next/link";
+import { useState } from "react";
+import classes from "./index.module.scss";
+import mockTag from "@/json/tag.json";
 const Register = () => {
+  const [showCategory, setShowcategory] = useState(true);
+  function clickShowCategory() {
+    setShowcategory(!showCategory);
+  }
   return (
     <div className={classes.main}>
       <div className={classes.left}>
@@ -55,13 +61,37 @@ const Register = () => {
           <p className={classes.spaceTenPx}></p>
           <hr />
           <p className={classes.spaceTenPx}></p>
-          <Link href="http://localhost:3000/login">
-            <p className={classes.registerBut}>Register</p>
-          </Link>
+          <p onClick={clickShowCategory} className={classes.registerBut}>
+            Register
+          </p>
+          {showCategory ? (
+            <></>
+          ) : (
+            <div className={classes.selectCategory}>
+              <p className={classes.categoryText}>เลือกหมวดหมู่ที่คุณสนใจ</p>
+              <p className={classes.categoryUndertext}>
+                * ใช้เพื่อเเนะนำสถานที่ ทีคุณอาจสนใจ
+              </p>
+              <div className={classes.categoryBg}>
+                {mockTag.tag.map((e) => {
+                  return (
+                    <div className={classes.oneTag}>
+                      <p>{e.name}</p>
+                    </div>
+                  );
+                })}
+              </div>
+              <div className={classes.doneZone}>
+                <div className={classes.doneButton}>
+                  <p>Done</p>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Register
+export default Register;
