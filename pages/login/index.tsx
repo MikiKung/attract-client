@@ -1,4 +1,5 @@
-import classes from "./index.module.scss";
+import Link from 'next/link'
+import classes from './index.module.scss'
 const Login = () => {
   return (
     <div className={classes.main}>
@@ -13,14 +14,30 @@ const Login = () => {
       <div className={classes.right}>
         <p className={classes.textInfo}>Login</p>
         <div className={classes.inputForm}>
-            <input className={classes.inputItem} type="text" placeholder="Email address" />
-            <input className={classes.inputItem} type="text" placeholder="Password" />
-            <div className={classes.submitItem}><p className={classes.submitText}>Login</p></div>
-            <hr />
-            <div className={classes.submitItem}><p className={classes.submitText}>Register</p></div>
+          <input
+            className={classes.inputItem}
+            type="text"
+            placeholder="Email address"
+          />
+          <input
+            className={classes.inputItem}
+            type="text"
+            placeholder="Password"
+          />
+          <Link href="http://localhost:3000/">
+            <div className={classes.submitItem}>
+              <p className={classes.submitText}>Login</p>
+            </div>
+          </Link>
+          <hr />
+          <Link href="http://localhost:3000/register">
+            <div className={classes.submitItem}>
+              <p className={classes.submitText}>Register</p>
+            </div>
+          </Link>
         </div>
       </div>
     </div>
-  );
-};
-export default Login;
+  )
+}
+export default Login

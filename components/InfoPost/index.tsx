@@ -1,8 +1,22 @@
 import classes from './index.module.scss'
 import mockPost from '@/json/post.json'
+import mockUser from '@/json/user.json'
 import { useState } from 'react'
 const InfoPost = (props: any) => {
   const [edit, setEdit] = useState(true)
+  const [markClick, setMarkClick] = useState(true)
+  const [showComment, setShowComment] = useState(true)
+  function clickShowComment() {
+    setShowComment(!showComment)
+  }
+  function clickChangeMark() {
+    setMarkClick(!markClick)
+    props.markuser.length += 1
+  }
+  function clickChangeMarkClose() {
+    setMarkClick(!markClick)
+    props.markuser.length -= 1
+  }
   function clickEdit() {
     setEdit(!edit)
   }
@@ -45,15 +59,64 @@ const InfoPost = (props: any) => {
       </div>
       <div className={classes.underPost}>
         <hr />
-        <div>
-          <div className={classes.mark}>
+        <div className={classes.underZone}>
+          {markClick ? (
+            <div onClick={clickChangeMark} className={classes.markBeforeClick}>
+              <img
+                src="./markpost.svg"
+                className={classes.markImg}
+                alt="markpost"
+              />
+              <p className="pl-1">{props.markuser.length}</p>
+            </div>
+          ) : (
+            <div
+              onClick={clickChangeMarkClose}
+              className={classes.markAfterClick}
+            >
+              <img
+                src="./markClick.svg"
+                className={classes.markImg}
+                alt="markpost"
+              />
+              <p className="pl-1">{props.markuser.length}</p>
+            </div>
+          )}
+          <div onClick={clickShowComment} className={classes.mark}>
             <img
-              src="./markpost.svg"
               className={classes.markImg}
-              alt="markpost"
+              src="./comment.svg"
+              alt="comment"
             />
-            <p>{props.markuser.length}</p>
+            <p className="pl-1">{props.comment.length}</p>
           </div>
+        </div>
+        {showComment ? (
+          <></>
+        ) : (
+          <div>
+            <hr />
+            {props.comment.map((e: any) => {
+              return (
+                <div className={classes.oneComment}>
+                  <img
+                    className={classes.commentUserImg}
+                    src={e.commentImg}
+                    alt={e.id}
+                  />
+                  <p className={classes.commentText}>{e.commentText}</p>
+                </div>
+              )
+            })}
+          </div>
+        )}
+        <div className={classes.myComment}>
+          <img
+            src={props.user.img}
+            alt="profile"
+            className={classes.commentUserImg}
+          />
+          <input className={classes.commentUserText} placeholder="you have a quastion?" type="text" />
         </div>
       </div>
     </div>

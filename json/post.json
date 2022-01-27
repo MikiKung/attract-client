@@ -2,7 +2,7 @@
   "post": [
     {
       "id": "p01",
-      "text":"daskasjdj jwpqeojpqwoepoqwiepqowr;k qjflsd fjqwkejpq2jepoq jdkjpqejpqwjklw kjrlwhroiw hok sejrpowej prwuejweklkfhwelkrhweir wejr ;lwejrpwujrjew jlskdhfr jweprujpweurpo3rpowjerlkwej rjwproup3orpwoepowejlktwjelgkt",
+      "text": "daskasjdj jwpqeojpqwoepoqwiepqowr;k qjflsd fjqwkejpq2jepoq jdkjpqejpqwjklw kjrlwhroiw hok sejrpowej prwuejweklkfhwelkrhweir wejr ;lwejrpwujrjew jlskdhfr jweprujpweurpo3rpowjerlkwej rjwproup3orpwoepowejlktwjelgkt",
       "img": "https://firebasestorage.googleapis.com/v0/b/attract64-2.appspot.com/o/WINTER.png?alt=media&token=113898bd-5d9b-4132-a8da-e6d96f57e269",
       "ownuser": {
         "firstname": "peeranut",
@@ -16,19 +16,21 @@
           "id": "c1",
           "owner": "peeranut",
           "commentuser": "delta",
+          "commentImg": "https://firebasestorage.googleapis.com/v0/b/attract64-2.appspot.com/o/duck.png?alt=media&token=37e59296-855d-42da-a64c-ae3efac76989",
           "commentText": "ที่นี่น่าไปเที่ยวจัง"
         },
         {
           "id": "c2",
           "owner": "peeranut",
           "commentuser": "delta2",
-          "commentText": "น่าสนใ"
+          "commentImg": "https://firebasestorage.googleapis.com/v0/b/attract64-2.appspot.com/o/songzii.gif?alt=media&token=a920b342-a859-465b-894c-7c4b592da7d4",
+          "commentText": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
         }
       ]
     },
     {
       "id": "p02",
-      "text":"น่าไปดีนะครับ ที่เชียงใหม่",
+      "text": "น่าไปดีนะครับ ที่เชียงใหม่",
       "img": "https://firebasestorage.googleapis.com/v0/b/attract64-2.appspot.com/o/WINTER.png?alt=media&token=113898bd-5d9b-4132-a8da-e6d96f57e269",
       "ownuser": {
         "firstname": "delta",
@@ -41,6 +43,7 @@
         {
           "id": "c1",
           "owner": "delta",
+          "commentImg": "https://firebasestorage.googleapis.com/v0/b/attract64-2.appspot.com/o/songzii.gif?alt=media&token=a920b342-a859-465b-894c-7c4b592da7d4",
           "commentuser": "peeranut",
           "commentText": "สวัสดีครับ"
         },
@@ -48,6 +51,7 @@
           "id": "c2",
           "owner": "peeranut",
           "commentuser": "delta2",
+          "commentImg": "https://firebasestorage.googleapis.com/v0/b/attract64-2.appspot.com/o/WINTER.png?alt=media&token=113898bd-5d9b-4132-a8da-e6d96f57e269",
           "commentText": "อยู่ตรงไหนครับ"
         }
       ]

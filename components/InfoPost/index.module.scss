@@ -38,9 +38,41 @@
 .mark {
   display: flex;
   align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-bottom: 5px;
+}
+.mark:hover {
+  background-color: #ededed;
+  color: #bbbbbb;
+}
+.markBeforeClick {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-bottom: 5px;
+}
+.markBeforeClick:hover {
+  background-color: #ededed;
+  color: #bbbbbb;
+}
+.markAfterClick {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-bottom: 5px;
+}
+.markAfterClick:hover {
+  background-color: #ededed;
+  color: #72856c;
 }
 .markImg {
-  width: 15px;
+  height: 20px;
 }
 .morePost {
   cursor: pointer;
@@ -63,4 +95,40 @@
 .modalItem:hover {
   background-color: #72856c;
   transition: 0.25s;
+}
+.underZone {
+  margin-top: 5px;
+  // margin-bottom: 5px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.commentUserImg {
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+}
+.commentText {
+  margin-left: 10px;
+  padding: 5px;
+  border-radius: 15px;
+  background-color: #ededed;
+  display: flex;
+  flex-wrap: wrap;
+  overflow: hidden;
+}
+.oneComment {
+  margin-top: 10px;
+  display: flex;
+  align-items: flex-start;
+}
+.myComment{
+  display: flex;
+  margin-top: 10px;
+}
+.commentUserText{
+  margin-left: 10px;
+  background-color: #ededed;
+  border-radius: 10px;
+  padding: 5px;
+  width: 100%;
 }

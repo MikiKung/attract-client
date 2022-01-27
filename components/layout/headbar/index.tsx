@@ -2,6 +2,7 @@ import classes from './index.module.scss'
 import mockData from '../../../json/user.json'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
+import Link from 'next/link'
 const Headbar = (props: any) => {
   const [userAvartar, setUserAvatar] = useState(true)
   const [history, setHistory] = useState(true)
@@ -46,7 +47,7 @@ const Headbar = (props: any) => {
                       alt="cross"
                     />
                   </div>
-                  <hr className={classes.hr}/>
+                  <hr className={classes.hr} />
                 </div>
               )
             })}
@@ -70,9 +71,11 @@ const Headbar = (props: any) => {
           <p onClick={clickAvatar} className={classes.modalItem}>
             setting
           </p>
-          <p onClick={clickAvatar} className={classes.modalItem}>
-            log out
-          </p>
+          <Link href="http://localhost:3000/login">
+            <p onClick={clickAvatar} className={classes.modalItem}>
+              log out
+            </p>
+          </Link>
         </div>
       )}
     </div>
