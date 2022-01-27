@@ -13,6 +13,7 @@ const Headbar = (props: any) => {
     setUserAvatar(!userAvartar)
   }
   const router = useRouter()
+  console.log(props.user.historySearch)
   return (
     <div className={classes.main}>
       <img src="./logo-white.png" className={classes.logoImg} alt="logo" />
@@ -33,14 +34,14 @@ const Headbar = (props: any) => {
           <></>
         ) : (
           <div className={classes.searchHistory}>
-            {mockData.users.map((e) => {
+            {props.user.historySearch.map((e: any) => {
               return (
                 <div>
                   <div
                     onClick={clickShowHistory}
                     className={classes.oneHistory}
                   >
-                    <p>{e.firstname}</p>
+                    <p>{e}</p>
                     <img
                       className={classes.crossHistory}
                       src="./cross.svg"

@@ -55,9 +55,7 @@ const Register = () => {
           <p className={classes.spaceTenPx}></p>
           <hr />
           <p className={classes.spaceTenPx}></p>
-          <Link href="http://localhost:3000/login">
-            <p className={classes.registerBut}>Register</p>
-          </Link>
+          <p className={classes.registerBut}>Register</p>
         </div>
       </div>
     </div>
