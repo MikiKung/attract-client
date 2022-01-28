@@ -1,15 +1,20 @@
+import Link from 'next/link'
 import classes from './index.module.scss'
 const Leftbar = (props: any) => {
   return (
     <div className={classes.main}>
-      <span className={classes.allBtn}>
-        <img src="./home.svg" alt="home" />
-        <p className={classes.btnText}>Home</p>
-      </span>
-      <span className={classes.allBtn}>
-        <img src="./follow.svg" alt="follow" />
-        <p className={classes.btnText}>Follow</p>
-      </span>
+      <Link href="http://localhost:3000/">
+        <span className={classes.allBtn}>
+          <img src="./home.svg" alt="home" />
+          <p className={classes.btnText}>Home</p>
+        </span>
+      </Link>
+      <Link href="http://localhost:3000/follow">
+        <span className={classes.allBtn}>
+          <img src="./follow.svg" alt="follow" />
+          <p className={classes.btnText}>Follow</p>
+        </span>
+      </Link>
       <span className={classes.allBtn}>
         <img src="./mark.svg" alt="home" />
         <p className={classes.btnText}>Mark</p>

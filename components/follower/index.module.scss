@@ -1,0 +1,75 @@
+.oneUser {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+.userzone {
+  display: flex;
+  align-items: center;
+}
+.profileImg {
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+}
+.btnFollow {
+  display: flex;
+  margin: 10px;
+  padding: 1% 10%;
+  align-items: center;
+  background-color: transparent;
+  border: 1px solid #575757;
+  border-radius: 20px;
+  cursor: pointer;
+}
+// .btnFollow:hover {
+//   background-color: #585858;
+//   color: aliceblue;
+// }
+.clickBtnFollow {
+  display: flex;
+  margin: 10px;
+  padding: 1% 10%;
+  align-items: center;
+  background-color: #575757;
+//   border: 1px solid ;
+  border-radius: 20px;
+  cursor: pointer;
+}
+// .clickBtnFollow:hover {
+//   background-color: transparent;
+//   border: 1px solid #575757;
+// }
+.nameText {
+  font-size: 14px;
+}
+.usernameText {
+  font-size: 10px;
+}
+// .oneUser{
+//     // background-color: aqua;
+//     margin-top: 5px;
+// }
+// .inZone{
+// display: flex;
+// }
+// .profileImg{
+//     width: 40px;
+//     height: 40px;
+//     border-radius: 100%;
+// }
+// .nameText{
+//     font-size: 14px;
+// }
+// .usernameText{
+//     font-size: 10px;
+// }
+// .textZone{
+//     margin-left: 5px;
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: flex-start;
+// }

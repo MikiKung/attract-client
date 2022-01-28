@@ -3,8 +3,8 @@
   background-color: white;
   border-radius: 10px;
 }
-.headInput{
-    display: flex;
+.headInput {
+  display: flex;
 }
 .profileInput {
   height: 40px;
@@ -12,16 +12,131 @@
   border-radius: 100%;
 }
 
-.inputZone{
-    outline: none;
-    width: 100%;
-    margin-left: 10px;
+.inputZone {
+  outline: none;
+  width: 100%;
+  margin-left: 10px;
 }
-.underInput{
-    display: flex;
-    justify-content: space-around;
+.underInput {
+  display: flex;
+  justify-content: space-around;
 }
 .inputIconItem {
-    width: 30px;
-    cursor: pointer;
+  width: 30px;
+  cursor: pointer;
+}
+.modalPost {
+  position: fixed;
+  background-color: white;
+  z-index: 100;
+  width: 40%;
+  height: 50%;
+  border-radius: 10px;
+  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+}
+.topZonePost {
+  display: flex;
+  align-items: center;
+  padding: 2%;
+}
+.profileImg {
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+}
+
+.inpPost {
+  width: 100%;
+  height: 150px;
+  padding: 0 20px;
+  font-size: 16px;
+}
+.inpPost:focus {
+  outline: none;
+}
+.underCenterZonePost {
+  display: flex;
+  justify-content: space-evenly;
+  margin: 0 20px;
+  height: 11%;
+  border-radius: 10px;
+  background-color: #bbbb;
+}
+.btnPost {
+  margin-top: 3%;
+  margin-left: 20px;
+  margin-right: 20px;
+  height: 10%;
+  background-color: #849e7b;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 10px;
+}
+.btnPost:hover {
+  background-color: #a3b89d;
+}
+.btnPostText {
+  color: white;
+}
+.imgPost > input {
+  display: none;
+}
+.imgPost {
+  display: flex;
+  align-items: center;
+}
+.imgPostItem {
+  width: 30px;
+  cursor: pointer;
+}
+.categoryModal {
+  box-shadow: 10px 10px 10px 5px rgba(0, 0, 0, 0.75);
+  position: fixed;
+  width: 30%;
+  height: 40%;
+  top: 23%;
+  background-color: white;
+  padding: 1%;
+  border-radius: 10px;
+  border: 1px solid #ababab;
+  overflow: hidden;
+  overflow-y: scroll;
+}
+.categoryInput {
+  border: 1px solid #ababab;
+  width: 100%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  border-radius: 10px;
+  margin-bottom: 5px;
+}
+.oneTag {
+  padding-top: 10px;
+  cursor: pointer;
+}
+.oneTag:hover {
+  background-color: whitesmoke;
+  border-radius: 4px;
+}
+.addCategoryModal {
+  box-shadow: 10px 10px 10px 5px rgba(0, 0, 0, 0.75);
+  position: fixed;
+  width: 28%;
+  top: 33%;
+  background-color: white;
+  padding: 1%;
+  border-radius: 10px;
+  border: 1px solid #ababab;
+}
+.btnAddCategory{
+  background-color: #849e7b;
+  height: 40px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
 }

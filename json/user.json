@@ -1,7 +1,7 @@
 {
   "users": [
     {
-      "userID": "1234",
+      "userID": 1234,
       "img": "https://firebasestorage.googleapis.com/v0/b/attract64-2.appspot.com/o/duck.png?alt=media&token=37e59296-855d-42da-a64c-ae3efac76989",
       "username": "mikichan",
       "firstname": "peeranut",
@@ -13,32 +13,39 @@
       "birthday": "2001-02-15",
       "interestdID": ["i01", "i02", "i03", "i04"],
       "postID": ["p01", "p02"],
-      "followerUser": ["@nut", "@milk"],
-      "followingUser": ["@nut", "@milk", "@following"],
+      "followerUser": [
+        { "name": "nut", "username": "nutUsername" },
+        { "name": "delta", "username": "daltaUsername" }
+      ],
+      "followingUser": ["nut", "milk", "following"],
       "markPostID": ["m01", "m02", "m03"],
       "location": "dongsakngam 147",
       "historySearch": ["เชียงใหม่", "lumphun", "lumphang"],
       "notification": ["delta interact in you"]
     },
     {
-        "userID": "1235",
-        "img": "https://firebasestorage.googleapis.com/v0/b/attract64-2.appspot.com/o/songzii.gif?alt=media&token=a920b342-a859-465b-894c-7c4b592da7d4",
-        "username": "delta",
-        "firstname": "kirati",
-        "surename": "chantawong",
-        "email": "delta01@gmail.com",
-        "bio": "i love travel",
-        "gender": "man",
-        "password": "delta345",
-        "birthday": "2001-05-19",
-        "interestdID": ["i06", "i03", "i04"],
-        "postID": ["p01", "p02","p03"],
-        "followerUser": ["@nut", "@milk", "@pond"],
-        "followingUser": ["@nut", "@milk","man", "@following"],
-        "markPostID": ["m01", "m02", "m03","m04"],
-        "location": "chaiyaphum",
-        "historySearch": ["เชียงใหม่", "chaiyaphum", "lumphang"],
-        "notification": ["peeranut interact in you"]
-      }
+      "userID": 123,
+      "img": "https://firebasestorage.googleapis.com/v0/b/attract64-2.appspot.com/o/songzii.gif?alt=media&token=a920b342-a859-465b-894c-7c4b592da7d4",
+      "username": "delta",
+      "firstname": "kirati",
+      "surename": "chantawong",
+      "email": "delta01@gmail.com",
+      "bio": "i love travel",
+      "gender": "man",
+      "password": "delta345",
+      "birthday": "2001-05-19",
+      "interestdID": ["i06", "i03", "i04"],
+      "postID": ["p01", "p02", "p03"],
+      "followerUser": [
+        { "name": "nut", "username": "nutUsername" },
+        { "name": "delta", "username": "daltaUsername" },
+        { "name": "delta2", "username": "dalta2Username" }
+      ],
+      "followingUser": ["nut", "milk", "man", "following"],
+      "markPostID": ["m01", "m02", "m03", "m04"],
+      "location": "chaiyaphum",
+      "historySearch": ["เชียงใหม่", "chaiyaphum", "lumphang"],
+      "notification": ["peeranut interact in you"]
+    }
   ]
 }

@@ -17,7 +17,7 @@ export default function Home() {
       </Head>
       <Layout>
         <div className={classes.main}>
-          <PostInput />
+          <PostInput user={mockUser.users[1]}/>
           {mockPost.post.map((mockPost) => {
             return (
               <InfoPost
@@ -27,49 +27,6 @@ export default function Home() {
               />
             )
           })}
-          <p>tets</p>
-          <p>tets</p>
-          <p>tets</p>
-          <p>tets</p>
-          <p>tets</p>
-          <p>tets</p>
-          <p>tets</p>
-          <p>tets</p>
-          <p>tets</p>
-          <p>tets</p>
-          <p>tets</p>
-          <p>tets</p>
-          <p>tets</p>
-          <p>tets</p>
-          <p>tets</p>
-          <p>tets</p>
-          <p>tets</p>
-          <p>tets</p>
-          <p>tets</p>
-          <p>tets</p>
-          <p>tets</p>
-          <p>tets</p>
-          <p>tets</p>
-          <p>tets</p>
-          <p>tets</p>
-          <p>tets</p>
-          <p>tets</p>
-          <p>tets</p>
-          <p>tets</p>
-          <p>tets</p>
-          <p>tets</p>
-          <p>tets</p>
-          <p>tets</p>
-          <p>tets</p>
-          <p>tets</p>
-          <p>tets</p>
-          <p>tets</p>
-          <p>tets</p>
-          <p>tets</p>
-          <p>tets</p>
-          <p>tets</p>
-          <p>tets</p>
-          <p>tets</p>
         </div>
       </Layout>
     </div>
