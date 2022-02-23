@@ -1,11 +1,48 @@
 import classes from './index.module.scss'
-import mockUser from '@/json/user.json'
 import mockTag from '@/json/tag.json'
-import { useState } from 'react'
+import { useRouter } from 'next/dist/client/router'
+import React, { useState, useEffect } from 'react'
+import axios from 'axios'
+interface ICategory {
+  name?: string
+}
 const PostInput = (props: any) => {
+  const router = useRouter()
   const [showInputPost, setShowInputPost] = useState(true)
   const [showCategory, setShowCategory] = useState(true)
   const [showAddCategory, setShowAddCategory] = useState(true)
+  const [categoryData, setShowCategoryData] = useState<any>({})
+  const [Cname, setCname] = useState('')
+  const [cateInPost, setCateInPost] = useState<any>([])
+
+  // function addCname(res:any){
+  //   setCname(res)
+  //   clickShowCategory
+  // }
+
+  const addCateInPost = (res: any) => {
+    setCateInPost([...cateInPost,res])
+  }
+
+  useEffect(() => {
+    axios.get(`http://localhost:3001/category`).then((res) => {
+      // console.log(res.data)
+      setShowCategoryData(res.data)
+    })
+  }, [])
+  function postCategory() {
+    if (confirm(`confirm to input ${Cname} in category?`)) {
+      axios
+        .post('http://localhost:3001/category', {
+          name: Cname,
+        })
+        .then(() => {
+          location.reload()
+          setShowAddCategory(!showAddCategory)
+        })
+    }
+  }
+
   function clickShowCategory() {
     setShowCategory(!showCategory)
   }
@@ -49,21 +86,27 @@ const PostInput = (props: any) => {
           <></>
         ) : (
           <div className={classes.modalPost}>
-            <div className={classes.topZonePost}>
-              <img
-                src={props.user.img}
-                className={classes.profileImg}
-                alt={props.firstname}
-              />
-              <p>
-                {props.user.firstname} {props.user.surename}
-              </p>
+            <div className={classes.topZonePost2}>
+              <div className={classes.topZonePost}>
+                <img
+                  src={props.user.img}
+                  className={classes.profileImg}
+                  alt={props.firstname}
+                />
+                <p>
+                  {props.user.firstname} {props.user.surename}
+                </p>
+              </div>
+              <div>
+                <img src="./cross.svg" onClick={clickShowInputPost} alt="" />
+              </div>
             </div>
             <div>
               <textarea
                 placeholder="Where have you traveled?"
                 className={classes.inpPost}
               ></textarea>
+              <p>{cateInPost}</p>
             </div>
             <div className={classes.underCenterZonePost}>
               <div className={classes.imgPost}>
@@ -86,17 +129,23 @@ const PostInput = (props: any) => {
                 <></>
               ) : (
                 <div className={classes.categoryModal}>
-                  {/* <p>test</p> */}
+                  <div className={classes.closeInp}>
+                    <img src="./cross.svg" onClick={clickShowCategory} alt="" />
+                  </div>
                   <input
                     type="text"
                     className={classes.categoryInput}
                     placeholder="เลือกหมวดหมู่ที่เกี่ยวกับการท่องเที่ยวของคุณ"
                   />
                   <div>
-                    {mockTag.tag.map((e) => {
+                    {categoryData.map((e: any) => {
                       return (
                         <div
-                          onClick={clickShowCategory}
+                          key={e.id}
+                          //  zone add cateory in post
+                          onClick={() => {
+                            addCateInPost(e.name)
+                          }}
                           className={classes.oneTag}
                         >
                           <p className="pl-1">{e.name}</p>
@@ -115,14 +164,26 @@ const PostInput = (props: any) => {
                       <></>
                     ) : (
                       <div className={classes.addCategoryModal}>
-                        <p>ชื่อหมวดหมู่ที่ต้องการเพิ่ม</p>
+                        <div className={classes.closeAddCategory}>
+                          <p>ชื่อหมวดหมู่ที่ต้องการเพิ่ม</p>
+                          <div>
+                            <img
+                              src="./cross.svg"
+                              onClick={clickShowAddCategory}
+                              alt=""
+                            />
+                          </div>
+                        </div>
                         <input
                           className={classes.categoryInput}
                           type="text"
+                          onChange={(e) => {
+                            setCname(e.target.value)
+                          }}
                           placeholder="เพิ่มหมวดหมู่ที่เกี่ยวกับการท่องเที่ยวของคุณ"
                         />
                         <div
-                          onClick={clickShowAddCategory}
+                          onClick={postCategory}
                           className={classes.btnAddCategory}
                         >
                           <p>Done</p>

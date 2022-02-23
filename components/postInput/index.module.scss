@@ -37,7 +37,12 @@
 .topZonePost {
   display: flex;
   align-items: center;
+}
+.topZonePost2 {
+  display: flex;
+  align-items: center;
   padding: 2%;
+  justify-content: space-between;
 }
 .profileImg {
   width: 40px;
@@ -139,4 +144,14 @@
   justify-content: center;
   align-items: center;
   cursor: pointer;
+}
+.closeInp{
+height: 20px;
+margin-bottom: 2%;
+display: flex;
+justify-content: flex-end;
+}
+.closeAddCategory{
+  display: flex;
+  justify-content: space-between;
 }
