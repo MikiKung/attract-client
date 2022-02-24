@@ -2,6 +2,7 @@
   "users": [
     {
       "userID": 1234,
+      "bgImg":"https://positioningmag.com/wp-content/uploads/2019/09/1_paris.jpg",
       "img": "https://firebasestorage.googleapis.com/v0/b/attract64-2.appspot.com/o/duck.png?alt=media&token=37e59296-855d-42da-a64c-ae3efac76989",
       "username": "mikichan",
       "firstname": "peeranut",
@@ -25,6 +26,7 @@
     },
     {
       "userID": 123,
+      "bgImg":"https://s.isanook.com/tr/0/rp/rc/w850h510/yatxacm1w0/aHR0cHM6Ly9zLmlzYW5vb2suY29tL3RyLzAvdWQvMjgwLzE0MDI0OTcvSU1HXzE5MzYuanBnLmpwZw==.jpg",
       "img": "https://firebasestorage.googleapis.com/v0/b/attract64-2.appspot.com/o/songzii.gif?alt=media&token=a920b342-a859-465b-894c-7c4b592da7d4",
       "username": "delta",
       "firstname": "kirati",
