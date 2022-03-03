@@ -48,7 +48,7 @@ const PostInput = (props: any) => {
   }
 
   const previewImage = useMemo(() => {
-    console.log(file)
+    // console.log(file)
 
     if (process.browser) {
       if (!file) return ''

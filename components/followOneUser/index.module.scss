@@ -33,12 +33,13 @@
 .clickBtnFollow {
   height: 30px;
   width: 30%;
+  border: 1px solid #575757;
   display: flex;
   justify-content: center;
   margin: 10px;
   // padding: 1% 10%;
   align-items: center;
-  background-color: #575757;
+  background-color: #ededed;
   border-radius: 20px;
   cursor: pointer;
   user-select: none;

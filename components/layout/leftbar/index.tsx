@@ -23,7 +23,7 @@ const Leftbar = (props: any) => {
         <img src="./recommand.svg" alt="home" />
         <p className={classes.btnText}>Recommand</p>
       </span>
-      <Link href="http://localhost:3000/profile">
+      <Link href="http://localhost:3000/myprofile">
         <span className={classes.allBtn}>
           <img src="./profile.svg" alt="home" />
           <p className={classes.btnText}>Profile</p>

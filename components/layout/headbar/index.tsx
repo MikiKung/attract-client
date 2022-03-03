@@ -1,5 +1,4 @@
 import classes from './index.module.scss'
-import mockData from '../../../json/user.json'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
 import Link from 'next/link'
@@ -15,7 +14,7 @@ const Headbar = (props: any) => {
   const router = useRouter()
   return (
     <div className={classes.main}>
-      <img src="./logo-white.png" className={classes.logoImg} alt="logo" />
+      <Link href={'http://localhost:3000/'}><img src="./logo-white.png" className={classes.logoImg} alt="logo" /></Link>
       <div className={classes.forHistory}>
         <div className={classes.allSearch}>
           <img

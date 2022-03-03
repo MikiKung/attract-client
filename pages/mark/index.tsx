@@ -1,7 +1,7 @@
-import Layout from "@/components/layout";
-import InfoPost from "@/components/InfoPost";
-import mockPost from "@/json/post.json";
-import mockUser from "@/json/user.json";
+import Layout from '@/components/layout'
+import InfoPost from '@/components/InfoPost'
+import mockPost from '@/json/post.json'
+import mockUser from '@/json/user.json'
 const Mark = () => {
   return (
     <div>
@@ -11,6 +11,6 @@ const Mark = () => {
         ))}
       </Layout>
     </div>
-  );
-};
-export default Mark;
+  )
+}
+export default Mark

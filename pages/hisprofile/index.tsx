@@ -3,12 +3,12 @@ import InfoPost from "@/components/InfoPost";
 import classes from "./index.module.scss";
 import mockPost from "@/json/post.json";
 import mockUser from "@/json/user.json";
-import ProfileZone from "@/components/profileZone";
+import HisProfileZone from "@/components/hisprofileZone";
 const Profile = () => {
   return (
     <div>
       <Layout>
-        <ProfileZone user={mockUser.users[1]} />
+        <HisProfileZone user={mockUser.users[1]} />
         {mockPost.post.map((mockPost) => {
           return (
             <InfoPost
