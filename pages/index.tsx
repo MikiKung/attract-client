@@ -14,6 +14,7 @@ export default function Home() {
           href="https://fonts.googleapis.com/css2?family=Krona+One&display=optional"
           rel="stylesheet"
         />
+        <title>attract</title>
       </Head>
       <Layout>
         <div className={classes.main}>

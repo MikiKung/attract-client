@@ -9,7 +9,7 @@ const FollowPage = () => {
         <div className={classes.main}>
           <p className={classes.headText}>Follow</p>
 
-          <Following user={mockUser.users[1]} />
+          <Following user={mockUser.users[1]}/>
         </div>
       </Layout>
     </div>

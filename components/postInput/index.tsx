@@ -1,7 +1,7 @@
 import classes from './index.module.scss'
 import mockTag from '@/json/tag.json'
 import { useRouter } from 'next/dist/client/router'
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useMemo } from 'react'
 import axios from 'axios'
 interface ICategory {
   name?: string
@@ -14,19 +14,23 @@ const PostInput = (props: any) => {
   const [categoryData, setShowCategoryData] = useState<any>({})
   const [Cname, setCname] = useState('')
   const [cateInPost, setCateInPost] = useState<any>([])
+  const [file, setFile] = useState<any>()
 
-  // function addCname(res:any){
-  //   setCname(res)
-  //   clickShowCategory
-  // }
+  function delList(i: number) {
+    cateInPost.splice(i, 1)
+    setCateInPost([...cateInPost])
+  }
+
+  function delImg() {
+    setFile('')
+  }
 
   const addCateInPost = (res: any) => {
-    setCateInPost([...cateInPost,res])
+    setCateInPost([...cateInPost, res])
   }
 
   useEffect(() => {
     axios.get(`http://localhost:3001/category`).then((res) => {
-      // console.log(res.data)
       setShowCategoryData(res.data)
     })
   }, [])
@@ -42,6 +46,15 @@ const PostInput = (props: any) => {
         })
     }
   }
+
+  const previewImage = useMemo(() => {
+    console.log(file)
+
+    if (process.browser) {
+      if (!file) return ''
+      return URL.createObjectURL(file)
+    }
+  }, [file])
 
   function clickShowCategory() {
     setShowCategory(!showCategory)
@@ -106,7 +119,34 @@ const PostInput = (props: any) => {
                 placeholder="Where have you traveled?"
                 className={classes.inpPost}
               ></textarea>
-              <p>{cateInPost}</p>
+              {previewImage && (
+                <div className={classes.imgPreview}>
+                  <img src={previewImage} />
+                  <img
+                    src="./cross.svg"
+                    className={classes.ImgCross}
+                    alt="cross"
+                    onClick={delImg}
+                  />
+                </div>
+              )}
+            </div>
+            <div>
+              {cateInPost.map((e: any, i: number) => {
+                return (
+                  <div key={i} className={classes.tag}>
+                    <div className={classes.tagCate}>
+                      <span>{e}</span>
+                      <img
+                        className={classes.crossImgCate}
+                        onClick={() => delList(i)}
+                        src="./cross.svg"
+                        alt=""
+                      />
+                    </div>
+                  </div>
+                )
+              })}
             </div>
             <div className={classes.underCenterZonePost}>
               <div className={classes.imgPost}>
@@ -117,7 +157,16 @@ const PostInput = (props: any) => {
                     alt="image"
                   />
                 </label>
-                <input id="imgPost" type="file" />
+                <input
+                  id="imgPost"
+                  type="file"
+                  onClick={(event:any)=> { 
+                    event.target.value = null
+               }}
+                  onChange={(e) => {
+                    setFile(e.target.files![0])
+                  }}
+                />
               </div>
               <img
                 className={classes.imgPostItem}
@@ -138,10 +187,10 @@ const PostInput = (props: any) => {
                     placeholder="เลือกหมวดหมู่ที่เกี่ยวกับการท่องเที่ยวของคุณ"
                   />
                   <div>
-                    {categoryData.map((e: any) => {
+                    {categoryData.map((e: any, i: number) => {
                       return (
                         <div
-                          key={e.id}
+                          key={i}
                           //  zone add cateory in post
                           onClick={() => {
                             addCateInPost(e.name)
