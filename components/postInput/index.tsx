@@ -36,20 +36,18 @@ const PostInput = (props: any) => {
   }, [])
   function postCategory() {
     if (confirm(`confirm to input ${Cname} in category?`)) {
-      axios
-        .post('http://localhost:3001/category', {
-          name: Cname,
-        })
-        .then(() => {
-          location.reload()
-          setShowAddCategory(!showAddCategory)
-        })
-    }
+    axios
+      .post('http://localhost:3001/category', {
+        name: Cname,
+      })
+      .then((res) => {
+        setShowCategoryData([...categoryData, res.data])
+        setShowAddCategory(!showAddCategory)
+      })
+  }
   }
 
   const previewImage = useMemo(() => {
-    // console.log(file)
-
     if (process.browser) {
       if (!file) return ''
       return URL.createObjectURL(file)
@@ -160,9 +158,9 @@ const PostInput = (props: any) => {
                 <input
                   id="imgPost"
                   type="file"
-                  onClick={(event:any)=> { 
+                  onClick={(event: any) => {
                     event.target.value = null
-               }}
+                  }}
                   onChange={(e) => {
                     setFile(e.target.files![0])
                   }}

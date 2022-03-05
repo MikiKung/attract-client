@@ -112,6 +112,7 @@
   color: white;
   font-weight: 600;
   font-size: 20px;
+  cursor: pointer;
 }
 .selectCategory {
   background-color: white;
@@ -147,6 +148,8 @@
   color: #C1C1C1;
 }
 .oneTag{
+  cursor: pointer;
+  user-select: none;
   background-color: #ff6584;
   height: 10%;
   margin-left: 2%;

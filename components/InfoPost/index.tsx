@@ -2,6 +2,25 @@ import classes from './index.module.scss'
 import mockPost from '@/json/post.json'
 import mockUser from '@/json/user.json'
 import { useState } from 'react'
+// interface Ipost {
+//   id: string
+//   text: string
+//   img: string
+//   ownuser: { firstname: string; img: string; surename: string }
+//   markuser: string
+//   timepost: string
+//   category: string[]
+//   comment: [
+//     {
+//       id: string
+//       owner: string
+//       commentImg: string
+//       commentuser: string
+//       commentText: string
+//     },
+//   ]
+// }
+
 const InfoPost = (props: any) => {
   const [edit, setEdit] = useState(true)
   const [markClick, setMarkClick] = useState(true)
@@ -55,6 +74,7 @@ const InfoPost = (props: any) => {
       </div>
       <div className={classes.middlePost}>
         <p className={classes.infoText}>{props.text}</p>
+        {/* {props.} */}
         <img className={classes.infoImg} src={props.img} alt={props.id} />
       </div>
       <div className={classes.underPost}>
@@ -116,7 +136,11 @@ const InfoPost = (props: any) => {
             alt="profile"
             className={classes.commentUserImg}
           />
-          <input className={classes.commentUserText} placeholder="you have a quastion?" type="text" />
+          <input
+            className={classes.commentUserText}
+            placeholder="you have a quastion?"
+            type="text"
+          />
         </div>
       </div>
     </div>
