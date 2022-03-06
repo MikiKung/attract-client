@@ -9,7 +9,6 @@ import { useRouter } from 'next/router'
 const Register = () => {
   const [showCategory, setShowcategory] = useState(true)
   const [cateData, setCateData] = useState<any>({})
-  const [img, setImg] = useState('')
   const [firstname, setFirstname] = useState('')
   const [surename, setSurename] = useState('')
   const [username, setUsername] = useState('')
@@ -18,9 +17,7 @@ const Register = () => {
   const [confirmpassword, setConfirmPassword] = useState('')
   const [expressionPass, setExpressionPass] = useState(true)
   const [statuspass, setStatusPass] = useState(true)
-  const [bio, setBio] = useState('')
   const [gender, setGender] = useState('')
-  const [birthdate, setBirthdate] = useState('')
   const [useData, setUseData] = useState(false)
   const router = useRouter()
 
@@ -38,20 +35,17 @@ const Register = () => {
   function registerUser(e: any) {
     if (
       /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/.test(password)
-      ) {
+    ) {
       if (password == confirmpassword) {
         e.preventDefault()
         axios
           .post(`http://localhost:3001/user`, {
-            img: img,
             firstname: firstname,
             surename: surename,
             username: username,
             email: email,
             password: password,
-            bio: bio,
             gender: gender,
-            birthDate: birthdate,
           })
           .then((res) => {
             if (res.data == 'email is used') {
@@ -60,7 +54,7 @@ const Register = () => {
               // console.log(res.data)
               // setUserData(res.data)
               clickShowCategory()
-              // router.push('http://localhost:3000/login')
+              router.push('http://localhost:3000/login')
             }
           })
       } else {
@@ -108,7 +102,7 @@ const Register = () => {
               />
               <input
                 type="text"
-                placeholder="Surname"
+                placeholder="Surename"
                 onChange={(e) => {
                   setSurename(e.target.value)
                 }}
@@ -180,14 +174,14 @@ const Register = () => {
               </div>
             </div>
             <p className={classes.spaceTenPx}></p>
-            <p className={classes.labelText}>Date of Birth</p>
+            {/* <p className={classes.labelText}>Date of Birth</p>
             <input
               type="date"
               onChange={(e) => {
                 setBirthdate(e.target.value)
               }}
               className={classes.inpItem}
-            />
+            /> */}
             <p className={classes.spaceTenPx}></p>
             <hr />
             <p className={classes.spaceTenPx}></p>
@@ -197,17 +191,32 @@ const Register = () => {
               <p>*your password and confirm password is not same</p>
             )}
             {useData ? <p>*This email is used</p> : <></>}
-            {expressionPass ? <></> : <p>*password require more 6 character,1 upper case, 1 symbols,1 number</p>}
-            <input
-              type="submit"
-              // onClick={clickShowCategory}
+            {expressionPass ? (
+              <></>
+            ) : (
+              <p>
+                *password require more 6 character,1 upper case, 1 symbols,1
+                number
+              </p>
+            )}
+            <div
+              // type="submit"
+              onClick={clickShowCategory}
               className={classes.registerBut}
-            />
+              // placeholder="submit"
+            >
+              submit
+            </div>
             {showCategory ? (
               <></>
             ) : (
               <div className={classes.selectCategory}>
-                <p className={classes.categoryText}>เลือกหมวดหมู่ที่คุณสนใจ</p>
+                <div className={classes.HeadCateText}>
+                  <p className={classes.categoryText}>
+                    เลือกหมวดหมู่ที่คุณสนใจ
+                  </p>
+                  <img onClick={clickShowCategory} src="./cross.svg" alt="" />
+                </div>
                 <p className={classes.categoryUndertext}>
                   * ใช้เพื่อเเนะนำสถานที่ ทีคุณอาจสนใจ
                 </p>
@@ -223,7 +232,8 @@ const Register = () => {
                 </div>
                 <div className={classes.doneZone}>
                   <div className={classes.doneButton}>
-                    <p>Done</p>
+                    {/* <p>Done</p> */}
+                    <input type="submit" className='cursor-pointer' />
                   </div>
                 </div>
               </div>

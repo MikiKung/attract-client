@@ -87,7 +87,7 @@ const InfoPost = (props: any) => {
                 className={classes.markImg}
                 alt="markpost"
               />
-              <p className="pl-1">{props.markuser.length}</p>
+              {/* <p className="pl-1">{props.markuser.length}</p> */}
             </div>
           ) : (
             <div
@@ -99,7 +99,7 @@ const InfoPost = (props: any) => {
                 className={classes.markImg}
                 alt="markpost"
               />
-              <p className="pl-1">{props.markuser.length}</p>
+              {/* <p className="pl-1">{props.markuser.length}</p> */}
             </div>
           )}
           <div onClick={clickShowComment} className={classes.mark}>
@@ -108,7 +108,7 @@ const InfoPost = (props: any) => {
               src="./comment.svg"
               alt="comment"
             />
-            <p className="pl-1">{props.comment.length}</p>
+            {/* <p className="pl-1">{props.comment.length}</p> */}
           </div>
         </div>
         {showComment ? (

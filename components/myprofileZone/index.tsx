@@ -27,18 +27,15 @@ const MyProfileZone = (props: any) => {
       </div>
       <div className={classes.followZone}>
         <span className={classes.onefollowZone}>
-          <p className={classes.countUser}>{props.user.followingUser.length}</p>
+          {/* <p className={classes.countUser}>{props.user.followingUser.length}</p> */}
           <p className={classes.countUserText}>following</p>
         </span>
         <span className={classes.onefollowZone}>
-          <p className={classes.countUser}>{props.user.followerUser.length}</p>
+          {/* <p className={classes.countUser}>{props.user.followerUser.length}</p> */}
           <p className={classes.countUserText}>follower</p>
         </span>
       </div>
-      <div className={classes.birthdate}>
-        <img className={classes.birthdateImg} src="./birthday.svg" alt="" />
-        <p className={classes.birthdateText}>{props.user.birthday}</p>
-      </div>
+
     </div>
   )
 }

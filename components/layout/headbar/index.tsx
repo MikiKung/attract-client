@@ -5,16 +5,22 @@ import Link from 'next/link'
 const Headbar = (props: any) => {
   const [userAvartar, setUserAvatar] = useState(true)
   const [history, setHistory] = useState(true)
+  const router = useRouter()
   function clickShowHistory() {
     setHistory(!history)
   }
   function clickAvatar() {
     setUserAvatar(!userAvartar)
   }
-  const router = useRouter()
+  function Logout() {
+    router.push('http://localhost:3000/login')
+    localStorage.removeItem('token')
+  }
   return (
     <div className={classes.main}>
-      <Link href={'http://localhost:3000/'}><img src="./logo-white.png" className={classes.logoImg} alt="logo" /></Link>
+      <Link href={'http://localhost:3000/'}>
+        <img src="./logo-white.png" className={classes.logoImg} alt="logo" />
+      </Link>
       <div className={classes.forHistory}>
         <div className={classes.allSearch}>
           <img
@@ -64,17 +70,14 @@ const Headbar = (props: any) => {
         <></>
       ) : (
         <div className={classes.modal}>
-          <p onClick={clickAvatar} className={classes.modalItem}>
-            Home
-          </p>
-          <p onClick={clickAvatar} className={classes.modalItem}>
-            setting
-          </p>
-          <Link href="http://localhost:3000/login">
+          <Link href={'http://localhost:3000/editmyprofile'}>
             <p onClick={clickAvatar} className={classes.modalItem}>
-              log out
+              setting
             </p>
           </Link>
+          <p onClick={Logout} className={classes.modalItem}>
+            log out
+          </p>
         </div>
       )}
     </div>
