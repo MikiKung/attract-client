@@ -10,7 +10,19 @@ const EditMyProfileZone = (props: any) => {
   const [showUserBgImg, setShowUserBgImg] = useState(true)
   const [file, setFile] = useState<any>()
   const [bgFile, setBgFile] = useState<any>()
-  const [user, setUser] = useState<any>({})
+  const [user, setUser] = useState<any>({
+    firstname: '',
+    surename: '',
+    username: '',
+    gender: '',
+    interestCategoryId: [],
+    postId: [],
+    followingUser: [],
+    followerUser: [],
+    markPostId: [],
+    notificationId: [],
+    historySearch: [],
+  })
   const [firstname, setFirstname] = useState('')
   const [surename, setSurename] = useState('')
   const [username, setUsername] = useState('')
@@ -64,13 +76,13 @@ const EditMyProfileZone = (props: any) => {
         },
       })
       .then((res) => {
-        setFirstname(res.data.firstname)
-        setSurename(res.data.surename)
-        setUsername(res.data.username)
-        setBio(res.data.bio)
-        setGender(res.data.gender)
-        setUser(res.data)
-        router.push('http://localhost:3000/myprofile')
+        // setFirstname(res.data.firstname)
+        // setSurename(res.data.surename)
+        // setUsername(res.data.username)
+        // setBio(res.data.bio)
+        // setGender(res.data.gender)
+        // setUser(res.data)
+        // console.log(res.data.followingUser)
       })
   }, [])
 
@@ -102,7 +114,8 @@ const EditMyProfileZone = (props: any) => {
         },
       )
       .then((res) => {
-        console.log(res.data)
+        router.push('http://localhost:3000/myprofile')
+        // console.log(res.data)
         setSettig(!setting)
       })
   }
@@ -117,7 +130,7 @@ const EditMyProfileZone = (props: any) => {
           <img
             onMouseEnter={clickShowBgImg}
             className={classes.topZoneProfile}
-            src={bgFile || user.bgImg}
+            src={ props.user.bgImg|| bgFile}
             alt=""
           />
         </div>
@@ -132,7 +145,7 @@ const EditMyProfileZone = (props: any) => {
             </div>
             <img
               className={classes.topZoneProfile}
-              src={bgFile || user.bgImg}
+              src={props.user.bgImg || bgFile}
               alt=""
             />
           </label>
@@ -152,7 +165,7 @@ const EditMyProfileZone = (props: any) => {
           onMouseEnter={clickShowUserImg}
           className={classes.underZoneProfile}
         >
-          <img className={classes.userImg} src={file || user.img} alt="" />
+          <img className={classes.userImg} src={props.user.img || file} alt="" />
         </div>
       ) : (
         <div
@@ -163,14 +176,13 @@ const EditMyProfileZone = (props: any) => {
             <div className={classes.hoverTextImg}>
               <p className={classes.hoverTextImgText}>change</p>
             </div>
-            <img className={classes.userImg} src={file || user.img} alt="" />
+            <img className={classes.userImg} src={props.user.img || file} alt="" />
           </label>
           <input
             type="file"
             accept="image/png,image/jpeg,image/jpg"
             onClick={(event: any) => {
               event.target.value = null
-              // console.log('test')
             }}
             onChange={handleImageChange}
             id="userImg"
@@ -182,27 +194,30 @@ const EditMyProfileZone = (props: any) => {
           <input
             type="text"
             className={classes.headName}
-            value={firstname}
+            placeholder="firstname"
+            value={props.user.firstname}
             onChange={(e) => {
               setFirstname(e.target.value)
             }}
-          />
+            />
           <input
-            value={surename}
+            value={props.user.surename}
+            placeholder="surename"
             type="text"
             className={classes.headName}
             onChange={(e) => {
               setSurename(e.target.value)
             }}
-          />
+            />
           <input
-            value={username}
+            value={props.user.username}
+            placeholder="username"
             type="text"
             className={classes.userName}
             onChange={(e) => {
               setUsername(e.target.value)
             }}
-          />
+            />
         </div>
         <p onClick={clickSave} className={classes.followBtn}>
           save
@@ -213,8 +228,9 @@ const EditMyProfileZone = (props: any) => {
       </div>
       <div className={classes.bioUser}>
         <textarea
+          placeholder="Bio"
           className={classes.bioText}
-          value={bio}
+          value={props.user.bio}
           onChange={(e) => {
             setBio(e.target.value)
           }}
@@ -222,11 +238,11 @@ const EditMyProfileZone = (props: any) => {
       </div>
       <div className={classes.followZone}>
         <span className={classes.onefollowZone}>
-          {/* <p className={classes.countUser}>{user.followingUser.length()}</p> */}
-          <p className={classes.countUserText}>following</p>
+          <p className={classes.countUser}>{props.user.followingUser.length}</p>
+          <p className={classes.countUserText}> following</p>
         </span>
         <span className={classes.onefollowZone}>
-          {/* <p className={classes.countUser}>{user.followerUser.length()}</p> */}
+          <p className={classes.countUser}>{props.user.followerUser.length}</p>
           <p className={classes.countUserText}>follower</p>
         </span>
       </div>

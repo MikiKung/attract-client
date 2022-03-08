@@ -8,7 +8,19 @@ import router from 'next/router'
 import { useEffect, useMemo, useState } from 'react'
 
 const MyProfile = () => {
-  const [user, setUser] = useState<any>({})
+  const [user, setUser] = useState<any>({
+    firstname: '',
+    surename: '',
+    username: '',
+    gender: '',
+    interestCategoryId: [],
+    postId: [],
+    followingUser: [],
+    followerUser: [],
+    markPostId: [],
+    notificationId: [],
+    historySearch: [],
+  })
   useEffect(() => {
     if (localStorage.getItem('token') == null) {
       router.push('http://localhost:3000/login')

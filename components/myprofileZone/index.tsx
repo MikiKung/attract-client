@@ -3,6 +3,7 @@ import { useState } from 'react'
 import classes from './index.module.scss'
 const MyProfileZone = (props: any) => {
   const [setting ,setSettig] = useState(true)
+  
 
   function clickSetting(){
     setSettig(!setting)
@@ -27,11 +28,11 @@ const MyProfileZone = (props: any) => {
       </div>
       <div className={classes.followZone}>
         <span className={classes.onefollowZone}>
-          {/* <p className={classes.countUser}>{props.user.followingUser.length}</p> */}
+          <p className={classes.countUser}>{props.user.followingUser.length}</p>
           <p className={classes.countUserText}>following</p>
         </span>
         <span className={classes.onefollowZone}>
-          {/* <p className={classes.countUser}>{props.user.followerUser.length}</p> */}
+          <p className={classes.countUser}>{props.user.followerUser.length}</p>
           <p className={classes.countUserText}>follower</p>
         </span>
       </div>

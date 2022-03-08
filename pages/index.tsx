@@ -5,8 +5,28 @@ import InfoPost from '@/components/InfoPost'
 import mockPost from '@/json/post.json'
 import mockUser from '@/json/user.json'
 import PostInput from '@/components/postInput'
+import { useEffect, useMemo, useState } from 'react'
+import router from 'next/router'
+import axios from 'axios'
 
 export default function Home() {
+  const [user, setUser] = useState({})
+
+  useEffect(() => {
+    if (localStorage.getItem('token') == null) {
+      router.push('http://localhost:3000/login')
+    }
+    axios
+      .get('http://localhost:3001/user/me', {
+        headers: {
+          authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
+      })
+      .then((res) => {
+        setUser(res.data)
+      })
+  }, [])
+
   return (
     <div>
       <Head>
@@ -18,7 +38,7 @@ export default function Home() {
       </Head>
       <Layout>
         <div className={classes.main}>
-          <PostInput user={mockUser.users[1]}/>
+          <PostInput user={user} />
           {mockPost.post.map((mockPost) => {
             return (
               <InfoPost

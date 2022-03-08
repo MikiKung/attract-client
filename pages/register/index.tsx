@@ -19,19 +19,33 @@ const Register = () => {
   const [statuspass, setStatusPass] = useState(true)
   const [gender, setGender] = useState('')
   const [useData, setUseData] = useState(false)
+  const [cateInRegis, setCateInRegis] = useState<any>([])
   const router = useRouter()
-
-  // const [Cname, setCname] = useState('')
-  // const [cateInPost, setCateInPost] = useState<any>([])
 
   useEffect(() => {
     axios.get(`http://localhost:3001/category`).then((res) => {
       setCateData(res.data)
     })
-  })
+  }, [])
   function clickShowCategory() {
     setShowcategory(!showCategory)
   }
+
+  function delList(i: number) {
+    cateInRegis.splice(i, 1)
+    setCateInRegis([...cateInRegis])
+  }
+
+  const addCateInRegis = (res: any) => {
+    const check = cateInRegis.findIndex((e: any) => e == res)
+    console.log(check)
+    if (check == -1) {
+      setCateInRegis([...cateInRegis, res])
+    } else {
+      delList(check)
+    }
+  }
+
   function registerUser(e: any) {
     if (
       /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/.test(password)
@@ -46,6 +60,7 @@ const Register = () => {
             email: email,
             password: password,
             gender: gender,
+            interestCategoryId: cateInRegis,
           })
           .then((res) => {
             if (res.data == 'email is used') {
@@ -223,17 +238,29 @@ const Register = () => {
                 <div className={classes.categoryBg}>
                   {cateData.map((e: any, i: number) => {
                     return (
-                      <OneCategory key={i} data={e.name} />
-                      // <div className={classes.oneTag}>
-                      //   <p>{e.name}</p>
-                      // </div>
+                      <div
+                        key={i}
+                        //  zone add cateory in post
+                        onClick={() => {
+                          addCateInRegis(e._id)
+                        }}
+                        className={
+                          cateInRegis.find((u: any) => u == e._id)
+                            ? classes.oneTagSelect
+                            : classes.oneTag
+                        }
+                      >
+                        <div>
+                          <p>{e.name}</p>
+                        </div>
+                      </div>
                     )
                   })}
                 </div>
                 <div className={classes.doneZone}>
                   <div className={classes.doneButton}>
                     {/* <p>Done</p> */}
-                    <input type="submit" className='cursor-pointer' />
+                    <input type="submit" className="cursor-pointer" />
                   </div>
                 </div>
               </div>

@@ -169,6 +169,20 @@
   padding-left: 7%;
   padding-right: 7%;
 }
+.oneTagSelect{
+  cursor: pointer;
+  user-select: none;
+  background-color: #6c63ff;
+  height: 10%;
+  margin-left: 2%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+  margin-top: 2%;
+  padding-left: 7%;
+  padding-right: 7%;
+}
 .doneButton {
   background-color: #6c63ff;
   height: 100%;
