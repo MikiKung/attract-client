@@ -13,18 +13,27 @@ export default function Home() {
   const [user, setUser] = useState({})
 
   useEffect(() => {
-    if (localStorage.getItem('token') == null) {
-      router.push('http://localhost:3000/login')
-    }
-    axios
-      .get('http://localhost:3001/user/me', {
-        headers: {
-          authorization: `Bearer ${localStorage.getItem('token')}`,
-        },
-      })
-      .then((res) => {
-        setUser(res.data)
-      })
+    // if (localStorage.getItem('token') == null) {
+    //   router.push('http://localhost:3000/login')
+    // }
+    // try {
+    //   axios
+    //     .get('http://localhost:3001/user/me', {
+    //       headers: {
+    //         authorization: `Bearer ${localStorage.getItem('token')}`,
+    //       },
+    //     })
+    //     .then((res) => {
+    //       setUser(res.data)
+    //     })
+    //     .catch((error) => {
+    //       console.log(error)
+
+    //       // router.push('http://localhost:3000/login')
+    //     })
+    // } catch (e) {
+    //   console.log(e);
+    // }
   }, [])
 
   return (

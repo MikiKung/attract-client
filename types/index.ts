@@ -19,6 +19,8 @@ export interface IUser {
     img: string
     bio: string
     postId: IPost[]
+    followingUser: IUser[]
+    followerUser: IUser[]
 }
 
 export interface ICategory {

@@ -25,7 +25,6 @@ const MyPost = (props: any) => {
   function clickEdit() {
     setEdit(!edit)
   }
-
   return (
     <div>
       {

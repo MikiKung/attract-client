@@ -19,9 +19,9 @@ const Headbar = (props: any) => {
   return (
     <div className={classes.main}>
       <Link href={'http://localhost:3000/'}>
-        <img src="./logo-white.png" className={classes.logoImg} alt="logo" />
+        <img src="/logo-white.png" className={classes.logoImg} alt="logo" />
       </Link>
-      <div className={classes.forHistory}>
+      <div className="relative w-96">
         <div className={classes.allSearch}>
           <img
             src="https://firebasestorage.googleapis.com/v0/b/attract64-2.appspot.com/o/search.svg?alt=media&token=742a63c1-26f2-4ed8-89e1-63179c3c8dbc"
@@ -37,22 +37,12 @@ const Headbar = (props: any) => {
         {history ? (
           <></>
         ) : (
-          <div className={classes.searchHistory}>
-            {props.user.historySearch.map((e: any) => {
+          <div className="w-full bg-white absolute top-9 rounded-md overflow-hidden shadow-lg border border-black divide-y divide-black">
+            {['hello', 'world', "1", "2"].map((e: any) => {
               return (
-                <div>
-                  <div
-                    onClick={clickShowHistory}
-                    className={classes.oneHistory}
-                  >
-                    <p>{e}</p>
-                    <img
-                      className={classes.crossHistory}
-                      src="./cross.svg"
-                      alt="cross"
-                    />
-                  </div>
-                  <hr className={classes.hr} />
+                <div onClick={clickShowHistory} className="flex justify-between items-center px-3 py-1 hover:bg-green-1 hover:text-white cursor-pointer">
+                  <p>{e}</p>
+                  <img className="w-4 h-4" src="/cross.svg" alt="cross" />
                 </div>
               )
             })}

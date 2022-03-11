@@ -33,6 +33,7 @@ const MyProfile = () => {
 
     fetchUser()
   }, [])
+  
   return (
     <div>
       <Layout>
