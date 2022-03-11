@@ -61,9 +61,9 @@ const PostInput = (props: any) => {
     setLoading(true)
     e.preventDefault()
     axios
-    .post(`http://localhost:3001/post`, {
-      img: file,
-      ownUserId: user._id,
+      .post(`http://localhost:3001/post`, {
+        img: file,
+        ownUserId: user._id,
         timePost: timeNow,
         postText: textPost,
         categoryId: cateInPost,

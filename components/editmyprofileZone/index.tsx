@@ -27,7 +27,6 @@ const EditMyProfileZone = (props: any) => {
   const [surename, setSurename] = useState('')
   const [username, setUsername] = useState('')
   const [bio, setBio] = useState('')
-  const [gender, setGender] = useState('')
   // <ipfs>
   const ipfs = create({
     host: 'ipfs.infura.io',
@@ -47,6 +46,7 @@ const EditMyProfileZone = (props: any) => {
       })
       const url = `https://ipfs.infura.io/ipfs/${image}`
       setBgFile(url)
+      // console.log(url);
     } catch (error) {
       console.log('Error uploading file: ', error)
     }
@@ -76,14 +76,14 @@ const EditMyProfileZone = (props: any) => {
         },
       })
       .then((res) => {
-        // setFirstname(res.data.firstname)
-        // setSurename(res.data.surename)
-        // setUsername(res.data.username)
-        // setBio(res.data.bio)
-        // setGender(res.data.gender)
-        // setUser(res.data)
+        setFirstname(res.data.firstname)
+        setSurename(res.data.surename)
+        setUsername(res.data.username)
+        setBio(res.data.bio)
+        setUser(res.data)
         // console.log(res.data.followingUser)
       })
+    // console.log(user.img)
   }, [])
 
   function clickShowBgImg() {
@@ -105,7 +105,6 @@ const EditMyProfileZone = (props: any) => {
           surename: surename,
           username: username,
           bio: bio,
-          gender: gender,
         },
         {
           headers: {
@@ -130,7 +129,7 @@ const EditMyProfileZone = (props: any) => {
           <img
             onMouseEnter={clickShowBgImg}
             className={classes.topZoneProfile}
-            src={ props.user.bgImg|| bgFile}
+              src={ bgFile|| user.bgImg}
             alt=""
           />
         </div>
@@ -145,7 +144,7 @@ const EditMyProfileZone = (props: any) => {
             </div>
             <img
               className={classes.topZoneProfile}
-              src={props.user.bgImg || bgFile}
+              src={ bgFile|| user.bgImg}
               alt=""
             />
           </label>
@@ -165,7 +164,7 @@ const EditMyProfileZone = (props: any) => {
           onMouseEnter={clickShowUserImg}
           className={classes.underZoneProfile}
         >
-          <img className={classes.userImg} src={props.user.img || file} alt="" />
+          <img className={classes.userImg} src={file || user.img} alt="" />
         </div>
       ) : (
         <div
@@ -176,7 +175,7 @@ const EditMyProfileZone = (props: any) => {
             <div className={classes.hoverTextImg}>
               <p className={classes.hoverTextImgText}>change</p>
             </div>
-            <img className={classes.userImg} src={props.user.img || file} alt="" />
+            <img className={classes.userImg} src={file || user.img} alt="" />
           </label>
           <input
             type="file"
@@ -195,29 +194,29 @@ const EditMyProfileZone = (props: any) => {
             type="text"
             className={classes.headName}
             placeholder="firstname"
-            value={props.user.firstname}
+            value={firstname}
             onChange={(e) => {
               setFirstname(e.target.value)
             }}
-            />
+          />
           <input
-            value={props.user.surename}
+            value={surename}
             placeholder="surename"
             type="text"
             className={classes.headName}
             onChange={(e) => {
               setSurename(e.target.value)
             }}
-            />
+          />
           <input
-            value={props.user.username}
+            value={username}
             placeholder="username"
             type="text"
             className={classes.userName}
             onChange={(e) => {
               setUsername(e.target.value)
             }}
-            />
+          />
         </div>
         <p onClick={clickSave} className={classes.followBtn}>
           save
@@ -230,7 +229,7 @@ const EditMyProfileZone = (props: any) => {
         <textarea
           placeholder="Bio"
           className={classes.bioText}
-          value={props.user.bio}
+          value={bio}
           onChange={(e) => {
             setBio(e.target.value)
           }}
@@ -238,11 +237,11 @@ const EditMyProfileZone = (props: any) => {
       </div>
       <div className={classes.followZone}>
         <span className={classes.onefollowZone}>
-          <p className={classes.countUser}>{props.user.followingUser.length}</p>
+          <p className={classes.countUser}>{user.followingUser.length}</p>
           <p className={classes.countUserText}> following</p>
         </span>
         <span className={classes.onefollowZone}>
-          <p className={classes.countUser}>{props.user.followerUser.length}</p>
+          <p className={classes.countUser}>{user.followerUser.length}</p>
           <p className={classes.countUserText}>follower</p>
         </span>
       </div>
@@ -250,6 +249,3 @@ const EditMyProfileZone = (props: any) => {
   )
 }
 export default EditMyProfileZone
-function ipfsHttpClient(arg0: string) {
-  throw new Error('Function not implemented.')
-}

@@ -2,24 +2,13 @@ import Layout from '@/components/layout'
 import InfoPost from '@/components/InfoPost'
 import mockPost from '@/json/post.json'
 import mockUser from '@/json/user.json'
+import MyPost from '@/components/myPost'
 import EditMyProfileZone from '@/components/editmyprofileZone'
 import { useEffect, useState } from 'react'
 import router from 'next/router'
 import axios from 'axios'
 const EditMyProfile = () => {
-  const [user, setUser] = useState<any>({
-    firstname: '',
-    surename: '',
-    username: '',
-    gender: '',
-    interestCategoryId: [],
-    postId: [],
-    followingUser: [],
-    followerUser: [],
-    markPostId: [],
-    notificationId: [],
-    historySearch: [],
-  })
+  const [user, setUser] = useState<any>({})
   useEffect(() => {
     if (localStorage.getItem('token') == null) {
       router.push('http://localhost:3000/login')
@@ -31,6 +20,7 @@ const EditMyProfile = () => {
         },
       })
       .then((res) => {
+        // console.log(res.data)
         setUser(res.data)
       })
   }, [])
@@ -38,15 +28,7 @@ const EditMyProfile = () => {
     <div>
       <Layout>
         <EditMyProfileZone user={user} />
-        {mockPost.post.map((mockPost) => {
-          return (
-            <InfoPost
-              key={mockPost.id}
-              user={mockUser.users[1]}
-              {...mockPost}
-            />
-          )
-        })}
+        <MyPost key={user._id} user={user} />
       </Layout>
     </div>
   )
