@@ -1,5 +1,5 @@
-import Link from "next/link";
-import classes from "./index.module.scss";
+import Link from 'next/link'
+import classes from './index.module.scss'
 const Leftbar = (props: any) => {
   return (
     <div className={classes.main}>
@@ -15,14 +15,18 @@ const Leftbar = (props: any) => {
           <p className={classes.btnText}>Follow</p>
         </span>
       </Link>
-      <span className={classes.allBtn}>
-        <img src="/mark.svg" alt="home" />
-        <p className={classes.btnText}>Mark</p>
-      </span>
-      <span className={classes.allBtn}>
-        <img src="/recommand.svg" alt="home" />
-        <p className={classes.btnText}>Recommand</p>
-      </span>
+      <Link href="http://localhost:3000/mark">
+        <span className={classes.allBtn}>
+          <img src="/mark.svg" alt="home" />
+          <p className={classes.btnText}>Mark</p>
+        </span>
+      </Link>
+      <Link href="http://localhost:3000/recommand">
+        <span className={classes.allBtn}>
+          <img src="/recommand.svg" alt="home" />
+          <p className={classes.btnText}>Recommand</p>
+        </span>
+      </Link>
       <Link href="http://localhost:3000/myprofile">
         <span className={classes.allBtn}>
           <img src="/profile.svg" alt="home" />
@@ -30,6 +34,6 @@ const Leftbar = (props: any) => {
         </span>
       </Link>
     </div>
-  );
-};
-export default Leftbar;
+  )
+}
+export default Leftbar

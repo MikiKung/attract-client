@@ -28,7 +28,7 @@ const EditMyProfile = () => {
     <div>
       <Layout>
         <EditMyProfileZone user={user} />
-        <MyPost key={user._id} user={user} />
+        {/* <MyPost key={user._id} user={user} /> */}
       </Layout>
     </div>
   )

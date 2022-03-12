@@ -6,12 +6,17 @@ import mockData from '@/json/user.json'
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import axios from 'axios'
+import { IUser } from 'types'
 
 const Layout = (props: any) => {
   const router = useRouter()
-  const [user, setUser] = useState({})
+  const [user, setUser] = useState<IUser>()
 
   useEffect(() => {
+    if (!localStorage.getItem('token')) {
+      router.push('http://localhost:3000/login')
+      return
+    }
     try {
       axios
         .get('http://localhost:3001/user/me', {

@@ -1,11 +1,12 @@
 export interface IPost {
     _id: string
-    ownUserId: string | IUser
+    ownUserId:IUser
     timePost: Date | string
     categoryId: ICategory[]
     postText: string
     img: string
     markId: IMark[]
+    commentId: IComment[]
 }
 
 export interface IUser {
@@ -21,6 +22,8 @@ export interface IUser {
     postId: IPost[]
     followingUser: IUser[]
     followerUser: IUser[]
+    historySearch: string[]
+    counts?: number
 }
 
 export interface ICategory {
@@ -30,6 +33,13 @@ export interface ICategory {
 
 export interface IMark {
     _id: string
-    postId: string
+    postId: IPost
     userId: string
+}
+
+export interface IComment {
+    _id: string
+    ownUserId: IUser
+    postId: IPost
+    commentText: string
 }

@@ -236,11 +236,11 @@ const EditMyProfileZone = (props: any) => {
         />
       </div>
       <div className={classes.followZone}>
-        <span className={classes.onefollowZone}>
+        <span onClick={() => router.push("/follow")} className={classes.onefollowZone}>
           <p className={classes.countUser}>{user.followingUser.length}</p>
           <p className={classes.countUserText}> following</p>
         </span>
-        <span className={classes.onefollowZone}>
+        <span onClick={() => router.push("/follower")} className={classes.onefollowZone}>
           <p className={classes.countUser}>{user.followerUser.length}</p>
           <p className={classes.countUserText}>follower</p>
         </span>

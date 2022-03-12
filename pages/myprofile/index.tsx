@@ -9,6 +9,7 @@ import router from 'next/router'
 import { useEffect, useMemo, useState } from 'react'
 import Post from '@/components/Posts'
 import { IUser } from 'types'
+import ProfileCard from '@/components/Profile'
 
 const MyProfile = () => {
   const [user, setUser] = useState<IUser>()
@@ -33,21 +34,22 @@ const MyProfile = () => {
 
     fetchUser()
   }, [])
-  
+
   return (
     <div>
       <Layout>
         {user && (
           <>
-            <MyProfileZone user={user} />
+             <ProfileCard user={user} me={user} refetch={fetchUser} />
             <div className="space-y-3 mt-3">
               {user.postId.map((post) => (
                 <Post
+                  refetch={fetchUser}
                   key={post._id}
                   user={user}
                   post={post}
-                  onDelete={fetchUser}
                   showSetting
+                  me={user}
                 />
               ))}
             </div>

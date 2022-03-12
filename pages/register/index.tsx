@@ -236,7 +236,7 @@ const Register = () => {
                   * ใช้เพื่อเเนะนำสถานที่ ทีคุณอาจสนใจ
                 </p>
                 <div className={classes.categoryBg}>
-                  {cateData.map((e: any, i: number) => {
+                  {cateData.filter((e: any) => e.name).map((e: any, i: number) => {
                     return (
                       <div
                         key={i}

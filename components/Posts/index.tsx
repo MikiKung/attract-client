@@ -1,46 +1,77 @@
 import axios from 'axios'
+import { useRouter } from 'next/router'
 import React, { FC, useMemo, useState } from 'react'
 import { dateFormat } from 'utils/helper'
-import { IPost, IUser } from '../../types'
+import { IComment, IPost, IUser } from '../../types'
+import CommentCard from '../Comment'
 interface Props {
   post?: Partial<IPost>
   user?: Partial<IUser>
   me?: Partial<IUser>
   showSetting?: boolean
-  onDelete?: () => void
   refetch?: () => void
 }
 const Post: FC<Props> = (props) => {
+  const router = useRouter()
   const [showComment, setShowComment] = useState<boolean>(false)
+  const [commentText, setCommentText] = useState<string>('')
+  const [isEdit, setIsEdit] = useState<boolean>(false)
+  const [editComment, setEditComment] = useState<Partial<IComment>>()
+
   const onDelete = async () => {
     await axios.delete(`http://localhost:3001/post/${props.post?._id}`)
-    // props.onDelete?.call(this)
     props.refetch?.call(this)
   }
   const onMark = async () => {
-    if (isMarked) {
-      const markId = props.post?.markId!.find(
-        (e) => e.userId === props.me?._id,
-      )!
-      await axios.delete(`http://localhost:3001/mark/${markId._id}`)
-    } else {
-      await axios.post('http://localhost:3001/mark/', {
-        postId: props.post?._id,
-        userId: props.me?._id,
-      })
+    if (props.me?._id) {
+      if (isMarked) {
+        const markId = props.post?.markId!.find(
+          (e) => e.userId === props.me?._id,
+        )!
+
+        await axios.delete(`http://localhost:3001/mark/${markId._id}`)
+      } else {
+        await axios.post('http://localhost:3001/mark/', {
+          postId: props.post?._id,
+          userId: props.me?._id,
+        })
+      }
+      props.refetch?.call(this)
     }
-    props.refetch?.call(this)
   }
 
   const isMarked = useMemo(() => {
-    if (!props.me || !props.post) return false
+    if (!props.me?._id || !props.post) return false
+
     return props.post.markId?.some((e) => e.userId === props.me?._id)
   }, [props.me, props.post])
+
+  const sendComment = async () => {
+    if (props.me?._id) {
+      if (isEdit) {
+        await axios.patch(`http://localhost:3001/comment/${editComment?._id}`, {
+          commentText: commentText,
+        })
+        setEditComment({})
+      } else {
+        await axios.post('http://localhost:3001/comment', {
+          ownUserId: props.me?._id,
+          commentText,
+          postId: props.post?._id,
+        })
+      }
+      setCommentText('')
+      props.refetch?.call(this)
+    }
+  }
 
   return (
     <div className="bg-white rounded-lg p-2">
       <div className="flex justify-between">
-        <div className="flex space-x-3">
+        <div
+          onClick={() => router.push(`/user/${props.user?._id}`)}
+          className="flex space-x-3 cursor-pointer"
+        >
           <img
             className="w-11 h-11 object-cover rounded-full"
             src={props.user?.img}
@@ -91,7 +122,7 @@ const Post: FC<Props> = (props) => {
           className="cursor-pointer hover:bg-gray-100 p-1 my-1 rounded-lg flex items-center justify-center"
         >
           <img
-            src={isMarked ? 'markClick.svg' : '/location.svg'}
+            src={isMarked ? '/markClick.svg' : '/location.svg'}
             className=" h-[22px]"
           />
           <div className="ml-3 text-green-1">{props.post?.markId?.length}</div>
@@ -101,42 +132,42 @@ const Post: FC<Props> = (props) => {
           className="cursor-pointer hover:bg-gray-100 p-1 my-1 rounded-lg flex items-center justify-center"
         >
           <img src="/comment.svg" className="h-[22px]" />
+          <div className="ml-3 text-green-1">{props.post?.commentId?.length}</div>
         </div>
       </div>
       {showComment && (
         <div className="space-y-3 mt-3">
-          <div className="flex space-x-3">
-            <img
-              src={props.user?.img}
-              className="w-8 h-8 object-cover rounded-full"
+          {props.post?.commentId?.map((e) => (
+            <CommentCard
+              me={props.me}
+              comment={e}
+              refech={props.refetch}
+              onEdit={(c) => {
+                setEditComment(c)
+                setIsEdit(true)
+                setCommentText(c.commentText || '')
+              }}
             />
-            <div className="bg-[#ededed] p-2 rounded-lg">
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s, when an unknown printer took a galley of
-              type and scrambled it to make a type specimen book. It has
-              survived not only five centuries, but also the leap into
-              electronic typesetting, remaining essentially unchanged. It was
-              popularised in the 1960s with the release of Letraset sheets
-              containing Lorem Ipsum passages, and more recently with desktop
-              publishing software like Aldus PageMaker including versions of
-              Lorem Ipsum.
-            </div>
-          </div>
+          ))}
         </div>
       )}
       <div className="mt-2">
         <div className="flex space-x-3">
           <img
             className="w-8 h-8 object-cover rounded-full"
-            src={props.user?.img}
+            src={props.me?.img}
           />
           <input
+            value={commentText}
+            onChange={(e) => setCommentText(e.target.value)}
             className="bg-gray-200 grow h-8 px-3 rounded-lg"
             placeholder="you have a question?"
           />
-          <button className="bg-green-1 text-white rounded-lg px-3 py-1">
-            Post
+          <button
+            onClick={sendComment}
+            className="cursor-pointer bg-green-1 text-white rounded-lg px-3 py-1"
+          >
+            {isEdit ? 'Edit' : 'Post'}
           </button>
         </div>
       </div>

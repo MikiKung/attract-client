@@ -1,9 +1,4 @@
 import Layout from '@/components/layout'
-import InfoPost from '@/components/InfoPost'
-import classes from './index.module.scss'
-import mockPost from '@/json/post.json'
-import mockUser from '@/json/user.json'
-import HisProfileZone from '@/components/hisprofileZone'
 import { useEffect, useState } from 'react'
 import { IUser } from 'types'
 import axios from 'axios'
@@ -35,7 +30,7 @@ const Profile = () => {
     <div>
       <Layout>
         <ProfileCard user={user} me={me} refetch={fetchUser} />
-        <div className="space-y-3 mt-3">
+        <div className="space-y-3 mt-3 pb-12">
           {user?.postId.map((post) => (
             <Post key={post._id} post={post} user={user} me={me} refetch={fetchUser} />
           ))}
