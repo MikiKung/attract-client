@@ -58,7 +58,7 @@ const FollowPage = () => {
                 </div>
                 <div
                   onClick={() => unfollow(e._id)}
-                  className="border border-black h-fit px-3 py-1 rounded-full hover:bg-gray-100 cursor-pointer"
+                  className="border border-black h-fit px-3 py-1 rounded-full hover:bg-gray-100 cursor-pointer bg-[#ededed]"
                 >
                   unfollow
                 </div>

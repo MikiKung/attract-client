@@ -16,16 +16,23 @@ const CommentCard: FC<Props> = (props) => {
       props.refech?.call(this)
     }
   }
+console.log(props.comment);
 
   return (
-    <div className="flex space-x-3">
+    <div className="grid grid-cols-[50px_minmax(300px,_1fr)]">
       <img
         src={props.comment?.ownUserId?.img}
         className="w-8 h-8 object-cover rounded-full"
       />
-      <div className="flex flex-col">
-        <div className="bg-[#ededed] p-2 rounded-lg">
-          {props.comment?.commentText}
+      <div className="flex flex-col w-full">
+        <div className="bg-[#ededed] p-2 flex-wrap rounded-lg overflow-hidden">
+          <div className="font-bold cursor-pointer">
+            {props.comment?.ownUserId?.firstname}{' '}
+            {props.comment?.ownUserId?.surename}
+          </div>
+          <div className="overflow-x flex-wrap break-all">
+            {props.comment?.commentText}
+          </div>
         </div>
 
         {props.comment?.ownUserId?._id === props.me?._id && (

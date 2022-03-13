@@ -19,8 +19,8 @@ const Recommand = () => {
   const fetchMe = async () => {
     const res = await axios.get('http://localhost:3001/user/me', {
       headers: {
-        authorization: `Bearer ${localStorage.getItem('token')}`
-      }
+        authorization: `Bearer ${localStorage.getItem('token')}`,
+      },
     })
     setMe(res.data)
   }
@@ -32,7 +32,13 @@ const Recommand = () => {
   return (
     <div>
       <Layout>
-        <div className='space-y-3 mb-12'>
+        <div className="text-[30px] flex font-medium my-[5px]">
+          Recommends
+        </div>
+        <div className="mb-[7px] text-[12px] ml-6">
+          * This page shows recommend posts which have the most marks.
+        </div>
+        <div className="space-y-3 mb-12">
           {posts.map((e) => (
             <Post post={e} me={me} user={e.ownUserId} refetch={fetchPost} />
           ))}

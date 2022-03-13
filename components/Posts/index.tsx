@@ -64,9 +64,9 @@ const Post: FC<Props> = (props) => {
       props.refetch?.call(this)
     }
   }
-
+console.log(props.me);
   return (
-    <div className="bg-white rounded-lg p-2">
+    <div className="bg-white rounded-lg p-5">
       <div className="flex justify-between">
         <div
           onClick={() => router.push(`/user/${props.user?._id}`)}
@@ -93,9 +93,7 @@ const Post: FC<Props> = (props) => {
                 <img src="/more.svg" />
               </summary>
               <div className="absolute top-8 right-0 shadow-md w-28 bg-white rounded-lg text-[16px] overflow-hidden select-none">
-                <div className="hover:bg-green-1 p-1 pl-2 cursor-pointer hover:text-white">
-                  Edit Post
-                </div>
+                
                 <div
                   onClick={onDelete}
                   className="hover:bg-green-1 p-1 pl-2 cursor-pointer hover:text-white"
@@ -110,7 +108,7 @@ const Post: FC<Props> = (props) => {
       <div className="py-3">{props.post?.postText}</div>
       <div className="flex gap-x-3 gap-y-3 pb-2 flex-wrap">
         {props.post?.categoryId?.map((e) => (
-          <div className="bg-green-1 select-none rounded-lg px-2 py-1 text-white w-fit">
+          <div key={e._id} className="bg-green-1 select-none rounded-lg px-2 py-1 text-white w-fit">
             {e.name}
           </div>
         ))}
@@ -141,6 +139,7 @@ const Post: FC<Props> = (props) => {
             <CommentCard
               me={props.me}
               comment={e}
+              key={e._id}
               refech={props.refetch}
               onEdit={(c) => {
                 setEditComment(c)

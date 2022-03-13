@@ -19,6 +19,9 @@ const Rightbar = (props: any) => {
   return (
     <div className={classes.main}>
       <div className="h-full flex flex-col justify-between p-4 divide-y">
+        <div className=" flex justify-center text-[18px] font-medium">
+          recommend users
+        </div>
         {users.map((e) => (
           <div
             onClick={() => router.push(`/user/${e._id}`)}
@@ -33,7 +36,7 @@ const Rightbar = (props: any) => {
               />
 
               <div className="">
-                <p className="truncate w-44">
+                <p className="truncate w-44 text-[16px]">
                   {e.firstname} {e.surename}
                 </p>
                 <p className="text-[12px]">@{e.username}</p>

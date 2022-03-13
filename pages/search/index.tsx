@@ -13,13 +13,6 @@ const Search = () => {
   const [me, setMe] = useState<IUser>()
   const router = useRouter()
 
-  const fetchPost = async (category?: string) => {
-    const res = await axios.get(
-      `http://localhost:3001/post/search?q=${category}`,
-    )
-    setPosts(res.data)
-  }
-
   const fethcMe = async () => {
     const res = await axios.get('http://localhost:3001/user/me', {
       headers: {
@@ -42,9 +35,60 @@ const Search = () => {
     setUsers(res.data || [])
   }
 
+  const fetchPost = async (category?: string) => {
+    const res = await axios.get(
+      `http://localhost:3001/post/search?q=${category}`,
+    )
+    setPosts(res.data)
+  }
+
+  const fetchText = async (search?: string) => {
+    const res = await axios.post(`http://localhost:4000/graphql/`, {
+      query: `query($text: String) {
+        searchPostByText(text: $text) {
+          postText
+          timePost
+          categoryId {
+            name
+          }
+          commentId {
+            commentText
+            ownUserId {
+              firstname
+              surename
+              img
+              username
+            }
+          }
+          markId {
+            _id
+            userId {
+              _id
+            }
+          }
+          ownUserId {
+            firstname
+            surename
+            _id
+            img
+          }
+        }
+      }
+      `,
+      variables: {
+        text: search,
+      },
+    })
+    // console.log(res.data.data.searchPostByText)
+
+    setPosts(res.data.data.searchPostByText || [])
+  }
+
   const handleSearch = async (search?: string) => {
     if (selectFilter === 'user') {
       fetchUser(search)
+    } else if (selectFilter === 'text') {
+      fetchText(search)
     } else {
       fetchPost(search)
     }
@@ -70,13 +114,14 @@ const Search = () => {
         >
           <option value="user">User</option>
           <option value="category">Category</option>
+          <option value="text">Text</option>
         </select>
-
         <div className="mt-12 space-y-3">
           {selectFilter == 'user' ? (
             <>
               {users.map((e) => (
                 <div
+                  key={e._id}
                   onClick={() => router.push(`/user/${e._id}`)}
                   className="flex space-x-3 bg-white shadow-lg p-2 rounded-lg cursor-pointer"
                 >

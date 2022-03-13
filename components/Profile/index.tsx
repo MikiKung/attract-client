@@ -61,11 +61,11 @@ const ProfileCard: FC<Props> = (props) => {
       <div className="px-4 mt-14">
         <div className="flex justify-between items-center">
           <div className="">
-            <div className="font-bold text-xl">
+            <div className="font-bold text-[25px]">
               {props.user?.firstname} {props.user?.surename}
             </div>
 
-            <div className="text-xs text-gray-500">@{props.user?.username}</div>
+            <div className="text-xs text-gray-500 text-[18px]">@{props.user?.username}</div>
           </div>
           {isMe() ? (
             <div
