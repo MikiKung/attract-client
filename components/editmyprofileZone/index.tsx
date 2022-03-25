@@ -129,7 +129,7 @@ const EditMyProfileZone = (props: any) => {
           <img
             onMouseEnter={clickShowBgImg}
             className={classes.topZoneProfile}
-              src={ bgFile|| user.bgImg}
+            src={bgFile || user.bgImg}
             alt=""
           />
         </div>
@@ -144,7 +144,7 @@ const EditMyProfileZone = (props: any) => {
             </div>
             <img
               className={classes.topZoneProfile}
-              src={ bgFile|| user.bgImg}
+              src={bgFile || user.bgImg}
               alt=""
             />
           </label>
@@ -190,33 +190,45 @@ const EditMyProfileZone = (props: any) => {
       )}
       <div className={classes.headUser}>
         <div>
-          <input
-            type="text"
-            className={classes.headName}
-            placeholder="firstname"
-            value={firstname}
-            onChange={(e) => {
-              setFirstname(e.target.value)
-            }}
-          />
-          <input
-            value={surename}
-            placeholder="surename"
-            type="text"
-            className={classes.headName}
-            onChange={(e) => {
-              setSurename(e.target.value)
-            }}
-          />
-          <input
-            value={username}
-            placeholder="username"
-            type="text"
-            className={classes.userName}
-            onChange={(e) => {
-              setUsername(e.target.value)
-            }}
-          />
+          <div className="flex justify-between">
+            <label className='mr-2' htmlFor="firstname">firstname: </label>
+            <input
+              id="firstname"
+              type="text"
+              className={classes.headName}
+              placeholder="firstname"
+              value={firstname}
+              onChange={(e) => {
+                setFirstname(e.target.value)
+              }}
+            />
+          </div>
+          <div className="flex justify-between mt-1">
+            <label className='mr-2' htmlFor="surename">surename:</label>
+            <input
+              id="surename"
+              value={surename}
+              placeholder="surename"
+              type="text"
+              className={classes.headName}
+              onChange={(e) => {
+                setSurename(e.target.value)
+              }}
+            />
+          </div>
+          <div className="flex justify-between mt-1 ">
+            <label className='mr-2' htmlFor="username">username:</label>
+            <input
+              id="username"
+              value={username}
+              placeholder="username"
+              type="text"
+              className={classes.userName}
+              onChange={(e) => {
+                setUsername(e.target.value)
+              }}
+            />
+          </div>
         </div>
         <p onClick={clickSave} className={classes.followBtn}>
           save
@@ -226,7 +238,9 @@ const EditMyProfileZone = (props: any) => {
         </p>
       </div>
       <div className={classes.bioUser}>
+        <label htmlFor="bio">bio:</label>
         <textarea
+          id="bio"
           placeholder="Bio"
           className={classes.bioText}
           value={bio}
@@ -236,11 +250,17 @@ const EditMyProfileZone = (props: any) => {
         />
       </div>
       <div className={classes.followZone}>
-        <span onClick={() => router.push("/follow")} className={classes.onefollowZone}>
+        <span
+          onClick={() => router.push('/follow')}
+          className={classes.onefollowZone}
+        >
           <p className={classes.countUser}>{user.followingUser.length}</p>
           <p className={classes.countUserText}> following</p>
         </span>
-        <span onClick={() => router.push("/follower")} className={classes.onefollowZone}>
+        <span
+          onClick={() => router.push('/follower')}
+          className={classes.onefollowZone}
+        >
           <p className={classes.countUser}>{user.followerUser.length}</p>
           <p className={classes.countUserText}>follower</p>
         </span>

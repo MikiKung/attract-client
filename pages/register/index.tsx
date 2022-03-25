@@ -16,6 +16,7 @@ const Register = () => {
   const [password, setPassword] = useState('')
   const [confirmpassword, setConfirmPassword] = useState('')
   const [expressionPass, setExpressionPass] = useState(true)
+  const [expressionMail, setExpressionMail] = useState(true)
   const [statuspass, setStatusPass] = useState(true)
   const [gender, setGender] = useState('')
   const [useData, setUseData] = useState(false)
@@ -47,38 +48,45 @@ const Register = () => {
   }
 
   function registerUser(e: any) {
-    if (
-      /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/.test(password)
-    ) {
-      if (password == confirmpassword) {
-        e.preventDefault()
-        axios
-          .post(`http://localhost:3001/user`, {
-            firstname: firstname,
-            surename: surename,
-            username: username,
-            email: email,
-            password: password,
-            gender: gender,
-            interestCategoryId: cateInRegis,
-          })
-          .then((res) => {
-            if (res.data == 'email is used') {
-              setUseData(true)
-            } else {
-              // console.log(res.data)
-              // setUserData(res.data)
-              clickShowCategory()
-              router.push('http://localhost:3000/login')
-            }
-          })
+    if (/^[\w.+\-]+@gmail\.com$/.test(email)) {
+      setExpressionMail(true)
+      if (
+        /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/.test(password)
+      ) {
+        setExpressionPass(true)
+        if (password == confirmpassword) {
+          e.preventDefault()
+          axios
+            .post(`http://localhost:3001/user`, {
+              firstname: firstname,
+              surename: surename,
+              username: username,
+              email: email,
+              password: password,
+              gender: gender,
+              interestCategoryId: cateInRegis,
+            })
+            .then((res) => {
+              if (res.data == 'email is used') {
+                setUseData(true)
+              } else {
+                // console.log(res.data)
+                // setUserData(res.data)
+                clickShowCategory()
+                router.push('http://localhost:3000/login')
+              }
+            })
+        } else {
+          e.preventDefault()
+          setStatusPass(false)
+        }
       } else {
         e.preventDefault()
-        setStatusPass(false)
+        setExpressionPass(false)
       }
     } else {
       e.preventDefault()
-      setExpressionPass(false)
+      setExpressionMail(false)
     }
   }
   return (
@@ -206,6 +214,7 @@ const Register = () => {
               <p>*your password and confirm password is not same</p>
             )}
             {useData ? <p>*This email is used</p> : <></>}
+            {expressionMail ? <></> : <div>*email using gmail</div>}
             {expressionPass ? (
               <></>
             ) : (
@@ -236,26 +245,28 @@ const Register = () => {
                   * ใช้เพื่อเเนะนำสถานที่ ทีคุณอาจสนใจ
                 </p>
                 <div className={classes.categoryBg}>
-                  {cateData.filter((e: any) => e.name).map((e: any, i: number) => {
-                    return (
-                      <div
-                        key={i}
-                        //  zone add cateory in post
-                        onClick={() => {
-                          addCateInRegis(e._id)
-                        }}
-                        className={
-                          cateInRegis.find((u: any) => u == e._id)
-                            ? classes.oneTagSelect
-                            : classes.oneTag
-                        }
-                      >
-                        <div>
-                          <p>{e.name}</p>
+                  {cateData
+                    .filter((e: any) => e.name)
+                    .map((e: any, i: number) => {
+                      return (
+                        <div
+                          key={i}
+                          //  zone add cateory in post
+                          onClick={() => {
+                            addCateInRegis(e._id)
+                          }}
+                          className={
+                            cateInRegis.find((u: any) => u == e._id)
+                              ? classes.oneTagSelect
+                              : classes.oneTag
+                          }
+                        >
+                          <div>
+                            <p>{e.name}</p>
+                          </div>
                         </div>
-                      </div>
-                    )
-                  })}
+                      )
+                    })}
                 </div>
                 <div className={classes.doneZone}>
                   <div className={classes.doneButton}>

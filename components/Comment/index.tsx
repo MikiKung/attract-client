@@ -16,7 +16,7 @@ const CommentCard: FC<Props> = (props) => {
       props.refech?.call(this)
     }
   }
-console.log(props.comment);
+// console.log(props.comment);
 
   return (
     <div className="grid grid-cols-[50px_minmax(300px,_1fr)]">

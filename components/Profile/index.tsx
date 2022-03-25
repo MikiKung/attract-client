@@ -70,14 +70,14 @@ const ProfileCard: FC<Props> = (props) => {
           {isMe() ? (
             <div
               onClick={() => router.push('/editmyprofile')}
-              className="cursor-pointer border border-black px-4 py-1 rounded-full hover:bg-gray-100"
+              className="cursor-pointer border border-black w-[8rem] flex justify-center px-4 py-1 rounded-full hover:bg-gray-100"
             >
               edit
             </div>
           ) : (
             <div
               onClick={follow}
-              className="border border-black cursor-pointer px-4 rounded-full hover:bg-gray-100"
+              className="border border-black cursor-pointer w-[8rem] flex justify-center px-4 rounded-full hover:bg-gray-100 "
             >
               {isFollowed() && 'un'}
               follow

@@ -24,6 +24,7 @@ const PostInput: FC<Props> = (props) => {
   const [categories, setCagtegories] = useState<ICategory[]>([])
 
   const [inputCategory, setInputCatagory] = useState<string>('')
+  const [statusCate, setStatusCate] = useState(false)
 
   const [postText, setPostText] = useState<string>('')
 
@@ -46,9 +47,18 @@ const PostInput: FC<Props> = (props) => {
   }
 
   const postCategory = async () => {
-    await axios.post('http://localhost:3001/category', { name: inputCategory })
-    fetchCategory()
-    setInputCatagory('')
+    // console.log(inputCategory == '' );
+    if (inputCategory != '') {
+      setStatusCate(false)
+      await axios.post('http://localhost:3001/category', {
+        name: inputCategory,
+      })
+      fetchCategory()
+      setInputCatagory('')
+      setShowInputCategory(false)
+    } else {
+      setStatusCate(true)
+    }
   }
 
   const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -158,8 +168,9 @@ const PostInput: FC<Props> = (props) => {
               </div>
 
               {image && (
-                <div className="flex justify-center my-6 p-6">
-                  <img src={image} className="h-[30rem]" alt="" />
+                <div className="flex justify-center  my-6 p-6">
+                  <img src={image} className="h-[30rem] relative" alt="" />
+                  <img src="/cross.svg" onClick={(e)=>{setImage("")}} className='absolute right-24 cursor-pointer select-none' alt="" />
                 </div>
               )}
 
@@ -206,11 +217,12 @@ const PostInput: FC<Props> = (props) => {
               <img src="/cross.svg" className="w-6" />
             </div>
           </div>
-          <input
+          {/* <input
             type="text"
             placeholder="เลือกหมวดหมู่ที่เกี่ยวกับการท่องเที่ยวของคุณ"
             className="border border-[#C2C2C2] w-full px-4 py-2 rounded-lg mb-3"
-          />
+          /> */}
+          <div className='flex justify-center text-[18px] font-medium'>หมวดหมู่</div>
           <div className="divide-y-2 divide-y-[#C2C2C2]">
             {categories
               .filter((e) => e.name)
@@ -250,6 +262,7 @@ const PostInput: FC<Props> = (props) => {
             placeholder="เลือกหมวดหมู่ที่เกี่ยวกับการท่องเที่ยวของคุณ"
             className="border border-[#C2C2C2] w-full px-4 py-2 rounded-lg my-3"
           />
+          {statusCate ? <div>*this input is require</div> : <></>}
           <div
             onClick={postCategory}
             className="text-white bg-green-1 w-full py-2 rounded-lg text-center cursor-pointer text-2xl"

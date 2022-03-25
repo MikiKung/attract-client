@@ -1,35 +1,34 @@
-import React, {useEffect} from 'react'
+import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 
 const test = () => {
-    useEffect(() => {
-        axios.post("http://localhost:4000/graphql", {
-            query: `
-            query ExampleQuery {
-                users {
-                  firstname
-                  surename
-                  posts {
-                    postText
-                    comments {
-                      commentText
-                      ownUser {
-                        firstname
-                        surename
-                      }
-                    }
-                  }
-                }
-              }
-              
-            `
-        }).then((res)=>{
-            console.log(res.data);
-            
-        })
-    },[])
+  const [data, setData] = useState([])
+  const [data1, setData1] = useState([])
+  useEffect(() => {
+    axios.get(`http://localhost:3001/category`).then((res) => {
+      // console.log(res.data);
+      setData(res.data)
+    })
+  },[])
+
+
+  function test1(){
+    axios.get(`http://localhost:3001/comment`).then((res)=>{
+      setData1(res.data)
+    })
+  }
   return (
-    <div>test</div>
+    <div>
+      {data.map((e: any) => {
+        return <div>{e.name}</div>
+      })}
+      <div onClick={test1}>testttttt</div>
+
+      {data1.map((e: any) => {
+        return <div>{e.commentText}</div>
+      })}
+
+    </div>
   )
 }
 
